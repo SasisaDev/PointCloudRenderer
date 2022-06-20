@@ -50,8 +50,7 @@ VulkanEngine::VulkanEngine(GLFWwindow* window)
     PickStartupPhysicalDevice();
     CreateLogicalDevice();
     CreateSwapchain();
-    CreateImageViews();
-    CreateGraphicsPipeline();
+    createImageViews();
 }
 
 VulkanEngine::~VulkanEngine()
@@ -317,7 +316,7 @@ void VulkanEngine::CreateSwapchain()
     Logger::Log("Gathered Swapchain Images");
 }
 
-void VulkanEngine::CreateImageViews()
+void VulkanEngine::createImageViews()
 {
     swapChainImageViews.resize(swapChainImages.size());
 
@@ -347,11 +346,6 @@ void VulkanEngine::CreateImageViews()
 
         Logger::Log("Created swapchain VkImageView");
     }
-}
-
-void VulkanEngine::CreateGraphicsPipeline()
-{
-
 }
 
 void VulkanEngine::SetPhysicalDevice(VkPhysicalDevice device)

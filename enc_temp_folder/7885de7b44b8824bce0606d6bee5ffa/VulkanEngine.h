@@ -68,7 +68,6 @@ public:
 	void CreateLogicalDevice();
 	void CreateSwapchain();
 	void createImageViews();
-	void createGraphicsPipeline();
 	
 	void SetPhysicalDevice(VkPhysicalDevice device);
 
