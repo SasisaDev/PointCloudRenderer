@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 deps/
+enc_temp_folder/

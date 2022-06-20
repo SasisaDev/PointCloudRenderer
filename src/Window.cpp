@@ -16,5 +16,7 @@ Window::~Window()
 
 int Window::Render()
 {
+	Engine->DrawFrame();
+
 	return 0;
 }

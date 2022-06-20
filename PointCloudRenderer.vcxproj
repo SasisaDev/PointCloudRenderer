@@ -147,13 +147,23 @@
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\Logger\Logger.cpp" />
     <ClCompile Include="src\VulkanEngine\VulkanEngine.cpp" />
+    <ClCompile Include="src\VulkanEngine\VulkanPipeline.cpp" />
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\Logger\Logger.h" />
     <ClInclude Include="src\VulkanEngine\VulkanEngine.h" />
+    <ClInclude Include="src\VulkanEngine\VulkanPipeline.h" />
     <ClInclude Include="src\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Shaders\UI\UISprite.frag">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="src\Shaders\UI\UISprite.vert">
+      <FileType>CppCode</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

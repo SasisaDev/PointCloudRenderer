@@ -7,6 +7,7 @@
 #include <set>
 
 #include "../Logger/Logger.h"
+#include "VulkanPipeline.h"
 
 #pragma comment(lib, "vulkan-1.lib")
 
@@ -48,6 +49,7 @@ public:
 
 	std::vector<VkImage> swapChainImages;
 	std::vector<VkImageView> swapChainImageViews;
+	std::vector<VkFramebuffer> swapChainFramebuffers;
 
 	VkQueue graphicsQueue;
 	VkQueue presentQueue;
@@ -57,20 +59,41 @@ public:
 	VkExtent2D extent;
 
 	GLFWwindow* Window;
+
+	VkRenderPass renderPass;
+	VulkanPipeline* Pipeline;
+
+	VkCommandPool commandPool;
+
+	VkCommandBuffer commandBuffer;
+
 public:
 
 	VulkanEngine(GLFWwindow* window);
 	~VulkanEngine();
+
+	VulkanEngine(const VulkanEngine&) = delete;
+	VulkanEngine operator =(const VulkanEngine&) = delete;
+
+	void RecreateSwapChain();
+	void CleanupSwapChain();
 
 	void CreateInstance();
 	void SetupDebug();
 	void PickStartupPhysicalDevice();
 	void CreateLogicalDevice();
 	void CreateSwapchain();
-	void createImageViews();
-	void createGraphicsPipeline();
+	void CreateImageViews();
+	void CreateGraphicsPipeline();
+	void CreateRenderPass();
+	void CreateFramebuffers();
+	void CreateCommandPool();
+	void CreateCommandBuffer();
 	
 	void SetPhysicalDevice(VkPhysicalDevice device);
+
+	void RecordCmdBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
+	void DrawFrame();
 
 	VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
 
