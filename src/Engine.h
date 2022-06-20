@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Window.h"
+#include "VulkanEngine/VulkanEngine.h"
 #include <vector>
 
 class Engine

@@ -144,11 +144,13 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\Logger\Logger.cpp" />
     <ClCompile Include="src\VulkanEngine\VulkanEngine.cpp" />
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine.h" />
+    <ClInclude Include="src\Logger\Logger.h" />
     <ClInclude Include="src\VulkanEngine\VulkanEngine.h" />
     <ClInclude Include="src\Window.h" />
   </ItemGroup>
