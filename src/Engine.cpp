@@ -41,6 +41,29 @@ void Engine::RemoveWindow(Window* window)
 	windows = newWindows;
 }
 
+void Engine::LoadScene(SScene* Scene)
+{
+	CurrentScene = Scene;
+	std::vector<IVulkanRenderable*> renderables;
+	for (auto actor : Scene->GetActors())
+	{
+		actor->CreateResources();
+		renderables.push_back(static_cast<IVulkanRenderable*>(actor));
+	}
+
+	if (windows[0])
+	{
+		windows[0]->GetEngine()->PushRenderables(renderables);
+	}
+
+	Logger::Log("Loaded scene.");
+	Logger::Log("Actors: ");
+	for (auto actor : Scene->GetActors())
+	{
+		Logger::Log("\t" + actor->ObjectName);
+	}
+}
+
 void Engine::RenderLoop()
 {
 	while (!bShouldExit && (windows.size() > 0) ? !glfwWindowShouldClose(windows[0]->GetWindow()) : true)

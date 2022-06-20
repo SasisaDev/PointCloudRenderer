@@ -1,4 +1,5 @@
 #include "src/Engine.h"
+#include "src/PointCloud/PointCloudActor.h"
 
 #define VERSION "0.0.1"
 
@@ -10,7 +11,13 @@ int main(int argc, char* argv[])
 
 	Window* MainWindow = new Window("Point Cloud Renderer", 1280, 720);
 
+	SScene* MainScene = new SScene();
+	SPointCloudActor* PCA = new SPointCloudActor();
+	PCA->ObjectName = "PointCloudActor";
+	MainScene->AddActor(PCA);
+
 	PCREngine->AddWindow(MainWindow);
+	PCREngine->LoadScene(MainScene);
 
 	PCREngine->RenderLoop();
 	// Cleanup process

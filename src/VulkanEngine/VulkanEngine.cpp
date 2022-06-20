@@ -81,7 +81,7 @@ void VulkanEngine::RecreateSwapChain()
     CreateImageViews();
     CreateRenderPass();
     CreateGraphicsPipeline();
-    //CreateFramebuffers();
+    CreateFramebuffers();
 }
 
 void VulkanEngine::CleanupSwapChain()
@@ -502,7 +502,10 @@ void VulkanEngine::RecordCmdBuffer(VkCommandBuffer commandBuffer, uint32_t image
 
     vkCmdBeginRenderPass(commandBuffer, &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
-    
+    for (IVulkanRenderable* renderable : Renderables)
+    {
+        renderable->Render(this);
+    }
 
     vkCmdEndRenderPass(commandBuffer);
 

@@ -8,6 +8,7 @@
 
 #include "../Logger/Logger.h"
 #include "VulkanPipeline.h"
+#include "IVulkanRenderable.h"
 
 #pragma comment(lib, "vulkan-1.lib")
 
@@ -67,6 +68,8 @@ public:
 
 	VkCommandBuffer commandBuffer;
 
+	std::vector<IVulkanRenderable*> Renderables;
+
 public:
 
 	VulkanEngine(GLFWwindow* window);
@@ -74,6 +77,8 @@ public:
 
 	VulkanEngine(const VulkanEngine&) = delete;
 	VulkanEngine operator =(const VulkanEngine&) = delete;
+
+	void PushRenderables(std::vector<IVulkanRenderable*> pushedRend) { Renderables = pushedRend; }
 
 	void RecreateSwapChain();
 	void CleanupSwapChain();
