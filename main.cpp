@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 
 	Engine* PCREngine = new Engine();
 
-	Window* MainWindow = new Window("Test", 1280, 720);
+	Window* MainWindow = new Window("Point Cloud Renderer", 1280, 720);
 
 	PCREngine->AddWindow(MainWindow);
 
