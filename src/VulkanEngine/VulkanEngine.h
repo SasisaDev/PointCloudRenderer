@@ -3,6 +3,8 @@
 #include <vulkan/vulkan.hpp>
 #include <GLFW/glfw3.h>
 
+#include <optional>
+
 #include "../Logger/Logger.h"
 
 #pragma comment(lib, "vulkan-1.lib")
@@ -19,15 +21,36 @@ private:
 #else
 	const bool enableValidationLayers = true;
 #endif
+
+	struct QueueFamilyIndices {
+		std::optional<uint32_t> graphicsFamily;
+
+		bool isComplete() {
+			return graphicsFamily.has_value();
+		}
+	};
+
 public:
 	VkInstance instance; // Vulkan library handle
 	VkDebugUtilsMessengerEXT debug_messenger; // Vulkan debug output handle
-	VkPhysicalDevice chosenGPU; // GPU chosen as the default device
+	VkPhysicalDevice physicalDevice; // GPU chosen as the default device
 	VkDevice device; // Vulkan device for commands
 	VkSurfaceKHR surface; // Vulkan window surface
 public:
 
 	VulkanEngine();
 	~VulkanEngine();
+
+	void CreateInstance();
+	void SetupDebug();
+	void PickStartupPhysicalDevice();
+	void CreateLogicalDevice();
+	
+	void SetPhysicalDevice(VkPhysicalDevice device);
+
+	QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice device);
+
+	bool isDeviceSuitable(VkPhysicalDevice device);
+
 	bool checkValidationLayerSupport();
 };
