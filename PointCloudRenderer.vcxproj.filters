@@ -66,6 +66,9 @@
     <ClCompile Include="Source\Core\Object\Pipeline\Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Core\IO\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Engine.h">
@@ -119,9 +122,14 @@
     <ClInclude Include="Source\Core\Object\Pipeline\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Core\IO\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\testshader.frag" />
-    <None Include="Shaders\testshader.vert" />
+    <None Include="Shaders\PostProcessing.frag" />
+    <None Include="Shaders\PostProcessing.vert" />
+    <None Include="Shaders\UI\Brush.vert" />
+    <None Include="Shaders\UI\Brush.frag" />
   </ItemGroup>
 </Project>
