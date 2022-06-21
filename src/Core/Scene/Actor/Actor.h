@@ -10,5 +10,5 @@ public:
 
 	virtual int CreateResources() override { return 0; }
 	virtual int ReleaseResources() override { return 0; }
-	virtual int Render(VulkanEngine* Engine) override;
+	virtual int Render(VkCommandBuffer* Buffer) override;
 };

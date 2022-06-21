@@ -45,6 +45,9 @@
     <ClCompile Include="src\PointCloud\PointCloudActor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\UI\Widget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -77,9 +80,14 @@
     <ClInclude Include="src\PointCloud\PointCloudActor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\UI\Widget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\UI\UISprite.frag" />
     <None Include="src\Shaders\UI\UISprite.vert" />
+    <None Include="src\Shaders\PointCloud\PointCloud.frag" />
+    <None Include="src\Shaders\PointCloud\PointCloud.vert" />
   </ItemGroup>
 </Project>

@@ -69,6 +69,7 @@ public:
 	VkCommandBuffer commandBuffer;
 
 	std::vector<IVulkanRenderable*> Renderables;
+	std::vector<IVulkanRenderable*> UIRenderables;
 
 public:
 
@@ -79,6 +80,7 @@ public:
 	VulkanEngine operator =(const VulkanEngine&) = delete;
 
 	void PushRenderables(std::vector<IVulkanRenderable*> pushedRend) { Renderables = pushedRend; }
+	void PushUIRenderable(IVulkanRenderable* pushedRend) { UIRenderables.push_back(pushedRend); }
 
 	void RecreateSwapChain();
 	void CleanupSwapChain();
@@ -101,6 +103,7 @@ public:
 	void DrawFrame();
 
 	VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
+	VkExtent2D GetExtent() { return extent; }
 
 	QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice device);
 	SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);

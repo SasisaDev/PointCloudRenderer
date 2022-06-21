@@ -17,6 +17,12 @@ int main(int argc, char* argv[])
 	MainScene->AddActor(PCA);
 
 	PCREngine->AddWindow(MainWindow);
+
+	//UI
+	SWidget* TestWidget = new SWidget();
+	TestWidget->ObjectName = "TestUI";
+	PCREngine->AddWidget(TestWidget);
+
 	PCREngine->LoadScene(MainScene);
 
 	PCREngine->RenderLoop();

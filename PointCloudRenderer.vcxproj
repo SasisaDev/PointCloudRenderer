@@ -149,6 +149,7 @@
     <ClCompile Include="src\Core\Scene\Actor\Actor.cpp" />
     <ClCompile Include="src\Core\Scene\Scene.cpp" />
     <ClCompile Include="src\PointCloud\PointCloudActor.cpp" />
+    <ClCompile Include="src\UI\Widget.cpp" />
     <ClCompile Include="src\VulkanEngine\IVulkanRenderable.cpp" />
     <ClCompile Include="src\VulkanEngine\VulkanEngine.cpp" />
     <ClCompile Include="src\VulkanEngine\VulkanPipeline.cpp" />
@@ -161,12 +162,15 @@
     <ClInclude Include="src\Core\Scene\Actor\Actor.h" />
     <ClInclude Include="src\Core\Scene\Scene.h" />
     <ClInclude Include="src\PointCloud\PointCloudActor.h" />
+    <ClInclude Include="src\UI\Widget.h" />
     <ClInclude Include="src\VulkanEngine\IVulkanRenderable.h" />
     <ClInclude Include="src\VulkanEngine\VulkanEngine.h" />
     <ClInclude Include="src\VulkanEngine\VulkanPipeline.h" />
     <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Shaders\PointCloud\PointCloud.frag" />
+    <None Include="src\Shaders\PointCloud\PointCloud.vert" />
     <None Include="src\Shaders\UI\UISprite.frag">
       <FileType>CppCode</FileType>
     </None>

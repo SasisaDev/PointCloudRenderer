@@ -64,6 +64,16 @@ void Engine::LoadScene(SScene* Scene)
 	}
 }
 
+void Engine::AddWidget(SWidget* widget)
+{
+	Widgets.push_back(widget);
+	if (windows[0])
+	{
+		windows[0]->GetEngine()->PushUIRenderable(static_cast<IVulkanRenderable*>(widget));
+	}
+	Logger::Log("Added widget: " + widget->ObjectName);
+}
+
 void Engine::RenderLoop()
 {
 	while (!bShouldExit && (windows.size() > 0) ? !glfwWindowShouldClose(windows[0]->GetWindow()) : true)

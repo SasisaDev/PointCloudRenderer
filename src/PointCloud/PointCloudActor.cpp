@@ -10,7 +10,8 @@ int SPointCloudActor::ReleaseResources()
     return 0;
 }
 
-int SPointCloudActor::Render(VulkanEngine* Engine)
+int SPointCloudActor::Render(VkCommandBuffer* CmdBuffer)
 {
+    
     return 0;
 }

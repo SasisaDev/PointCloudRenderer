@@ -1,6 +1,6 @@
 #include "Actor.h"
 
-int SActor::Render(VulkanEngine* Engine)
+int SActor::Render(VkCommandBuffer* Buffer)
 {
 	return 0;
 }

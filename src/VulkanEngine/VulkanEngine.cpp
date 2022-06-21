@@ -95,6 +95,7 @@ void VulkanEngine::CleanupSwapChain()
     }
 
     vkDestroySwapchainKHR(device, swapChain, nullptr);
+    vkDestroyRenderPass(device, renderPass, nullptr);
 }
 
 void VulkanEngine::CreateInstance()
@@ -502,9 +503,19 @@ void VulkanEngine::RecordCmdBuffer(VkCommandBuffer commandBuffer, uint32_t image
 
     vkCmdBeginRenderPass(commandBuffer, &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
+    // Bind graphics pipeline
+
+    //vkCmdBindPipeline(commandBuffer, nullptr, GraphicsPipeline);
     for (IVulkanRenderable* renderable : Renderables)
     {
-        renderable->Render(this);
+        renderable->Render(&commandBuffer);
+    }
+
+    // Bind UI pipeline
+    //vkCmdBindPipeline(commandBuffer, nullptr, UIPipeline);
+    for (IVulkanRenderable* renderable : UIRenderables)
+    {
+        renderable->Render(&commandBuffer);
     }
 
     vkCmdEndRenderPass(commandBuffer);
