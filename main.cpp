@@ -1,31 +1,29 @@
-#include "src/Engine.h"
-#include "src/PointCloud/PointCloudActor.h"
+#include "Source/Core/Engine.h"
 
 #define VERSION "0.0.1"
 
 int main(int argc, char* argv[])
 {
-	Logger::Log("Point Cloud Renderer Ver " + LTEXT(VERSION));
+	Logger::Log("Point Cloud Renderer Ver " + STEXT(VERSION) + " (OpenGL)");
 
 	Engine* PCREngine = new Engine();
 
 	Window* MainWindow = new Window("Point Cloud Renderer", 1280, 720);
 
 	SScene* MainScene = new SScene();
-	SPointCloudActor* PCA = new SPointCloudActor();
-	PCA->ObjectName = "PointCloudActor";
-	MainScene->AddActor(PCA);
+	SActor* TestActor = MainScene->SpawnActor<SActor>(ActorCreateInfo("TestActor"));
+	MainWindow->SetScene(MainScene);
 
 	PCREngine->AddWindow(MainWindow);
 
 	//UI
-	SWidget* TestWidget = new SWidget();
-	TestWidget->ObjectName = "TestUI";
-	PCREngine->AddWidget(TestWidget);
+	//SWidget* TestWidget = new SWidget();
+	//TestWidget->ObjectName = "TestUI";
+	//PCREngine->AddWidget(TestWidget);
 
-	PCREngine->LoadScene(MainScene);
+	//PCREngine->LoadScene(MainScene);
 
-	PCREngine->RenderLoop();
+	PCREngine->EngineLoop();
 	// Cleanup process
 
 	delete PCREngine;

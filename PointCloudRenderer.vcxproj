@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\VulkanSDK\1.3.216.0\Include;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\VulkanSDK\1.3.216.0\Lib32;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\lib\Release\Win32;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -144,39 +144,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\Engine.cpp" />
-    <ClCompile Include="src\Logger\Logger.cpp" />
-    <ClCompile Include="src\Core\Scene\Actor\Actor.cpp" />
-    <ClCompile Include="src\Core\Scene\Scene.cpp" />
-    <ClCompile Include="src\PointCloud\PointCloudActor.cpp" />
-    <ClCompile Include="src\UI\Widget.cpp" />
-    <ClCompile Include="src\VulkanEngine\IVulkanRenderable.cpp" />
-    <ClCompile Include="src\VulkanEngine\VulkanEngine.cpp" />
-    <ClCompile Include="src\VulkanEngine\VulkanPipeline.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="Source\Core\Debug\Logger.cpp" />
+    <ClCompile Include="Source\Core\Object\Object.cpp" />
+    <ClCompile Include="Source\Core\Engine.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Buffers\Buffers.cpp" />
+    <ClCompile Include="Source\Core\Renderer\IRenderable.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Renderer.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Renderers\OpenGLRenderer.cpp" />
+    <ClCompile Include="Source\Core\Scene\Actor\Actor.cpp" />
+    <ClCompile Include="Source\Core\Scene\Scene.cpp" />
+    <ClCompile Include="Source\Core\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Object.h" />
-    <ClInclude Include="src\Engine.h" />
-    <ClInclude Include="src\Logger\Logger.h" />
-    <ClInclude Include="src\Core\Scene\Actor\Actor.h" />
-    <ClInclude Include="src\Core\Scene\Scene.h" />
-    <ClInclude Include="src\PointCloud\PointCloudActor.h" />
-    <ClInclude Include="src\UI\Widget.h" />
-    <ClInclude Include="src\VulkanEngine\IVulkanRenderable.h" />
-    <ClInclude Include="src\VulkanEngine\VulkanEngine.h" />
-    <ClInclude Include="src\VulkanEngine\VulkanPipeline.h" />
-    <ClInclude Include="src\Window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Shaders\PointCloud\PointCloud.frag" />
-    <None Include="src\Shaders\PointCloud\PointCloud.vert" />
-    <None Include="src\Shaders\UI\UISprite.frag">
-      <FileType>CppCode</FileType>
-    </None>
-    <None Include="src\Shaders\UI\UISprite.vert">
-      <FileType>CppCode</FileType>
-    </None>
+    <ClInclude Include="Source\Core\Debug\Logger.h" />
+    <ClInclude Include="Source\Core\Object\Object.h" />
+    <ClInclude Include="Source\Core\Engine.h" />
+    <ClInclude Include="Source\Core\Renderer\Buffers\Buffers.h" />
+    <ClInclude Include="Source\Core\Renderer\IRenderable.h" />
+    <ClInclude Include="Source\Core\Renderer\Renderer.h" />
+    <ClInclude Include="Source\Core\Renderer\Renderers\OpenGLRenderer.h" />
+    <ClInclude Include="Source\Core\Scene\Actor\Actor.h" />
+    <ClInclude Include="Source\Core\Scene\Scene.h" />
+    <ClInclude Include="Source\Core\Window\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

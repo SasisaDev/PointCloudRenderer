@@ -18,76 +18,67 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window.cpp">
+    <ClCompile Include="Source\Core\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine.cpp">
+    <ClCompile Include="Source\Core\Object\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\VulkanEngine\VulkanEngine.cpp">
+    <ClCompile Include="Source\Core\Renderer\Buffers\Buffers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Logger\Logger.cpp">
+    <ClCompile Include="Source\Core\Window\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\VulkanEngine\VulkanPipeline.cpp">
+    <ClCompile Include="Source\Core\Renderer\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\Scene\Scene.cpp">
+    <ClCompile Include="Source\Core\Renderer\Renderers\OpenGLRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\Scene\Actor\Actor.cpp">
+    <ClCompile Include="Source\Core\Renderer\IRenderable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\VulkanEngine\IVulkanRenderable.cpp">
+    <ClCompile Include="Source\Core\Scene\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\PointCloud\PointCloudActor.cpp">
+    <ClCompile Include="Source\Core\Debug\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\Widget.cpp">
+    <ClCompile Include="Source\Core\Scene\Actor\Actor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Window.h">
+    <ClInclude Include="Source\Core\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine.h">
+    <ClInclude Include="Source\Core\Object\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\VulkanEngine\VulkanEngine.h">
+    <ClInclude Include="Source\Core\Renderer\Buffers\Buffers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Logger\Logger.h">
+    <ClInclude Include="Source\Core\Window\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\VulkanEngine\VulkanPipeline.h">
+    <ClInclude Include="Source\Core\Renderer\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Scene\Scene.h">
+    <ClInclude Include="Source\Core\Renderer\Renderers\OpenGLRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Scene\Actor\Actor.h">
+    <ClInclude Include="Source\Core\Renderer\IRenderable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\VulkanEngine\IVulkanRenderable.h">
+    <ClInclude Include="Source\Core\Scene\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Object.h">
+    <ClInclude Include="Source\Core\Debug\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\PointCloud\PointCloudActor.h">
+    <ClInclude Include="Source\Core\Scene\Actor\Actor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\Widget.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Shaders\UI\UISprite.frag" />
-    <None Include="src\Shaders\UI\UISprite.vert" />
-    <None Include="src\Shaders\PointCloud\PointCloud.frag" />
-    <None Include="src\Shaders\PointCloud\PointCloud.vert" />
   </ItemGroup>
 </Project>
