@@ -61,8 +61,14 @@ void Engine::EngineLoop()
 					glClearColor(0.075f, 0.075f, 0.075f, 1);
 					glClear(GL_COLOR_BUFFER_BIT);
 
-					if (auto Renderer = window->GetRenderer())
+					if (IRenderer* Renderer = window->GetRenderer())
 					{
+						if (Renderer->ShouldResize)
+						{
+							glViewport(0, 0, Renderer->GetCnavasWidth(), Renderer->GetCnavasHeight());
+							Renderer->ShouldResize = false;
+						}
+
 						Renderer->Render();
 					}
 

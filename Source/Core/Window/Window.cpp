@@ -10,6 +10,17 @@ Window::Window(std::string title, int w, int h)
 
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+	glfwSetWindowUserPointer(Handle, this);
+
+	glfwSetWindowSizeCallback(Handle, [](GLFWwindow* win, int w, int h) 
+		{
+			Window* window = reinterpret_cast<Window*>(glfwGetWindowUserPointer(win));
+			if (window)
+			{
+				window->GetRenderer()->RendererResized(w, h);
+			}
+		});
+
 	glfwMakeContextCurrent(Handle);
 
 	if (glewInit() != GLEW_OK)
@@ -26,6 +37,7 @@ void Window::SetScene(SScene* scene)
 	Logger::Log("Loaded actors: ");
 	for (auto actor : scene->GetActors())
 	{
+		Renderer->AddRenderObject(actor);
 		Logger::Log("\t" + actor->ObjectName);
 	}
 }

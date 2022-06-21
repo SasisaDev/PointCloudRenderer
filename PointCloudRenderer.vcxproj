@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\glm;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\lib\Release\Win32;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -154,6 +154,8 @@
     <ClCompile Include="Source\Core\Scene\Actor\Actor.cpp" />
     <ClCompile Include="Source\Core\Scene\Scene.cpp" />
     <ClCompile Include="Source\Core\Window\Window.cpp" />
+    <ClCompile Include="Source\PointCloud\PointCloudActor.cpp" />
+    <ClCompile Include="Source\PointCloud\PointCloudAsset.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Debug\Logger.h" />
@@ -167,6 +169,8 @@
     <ClInclude Include="Source\Core\Scene\Scene.h" />
     <ClInclude Include="Source\Core\Types\Transform.h" />
     <ClInclude Include="Source\Core\Window\Window.h" />
+    <ClInclude Include="Source\PointCloud\PointCloudActor.h" />
+    <ClInclude Include="Source\PointCloud\PointCloudAsset.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

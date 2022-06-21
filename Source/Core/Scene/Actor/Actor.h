@@ -5,6 +5,8 @@
 
 #include "../../Types/Transform.h"
 
+#define GENERATED_ACTOR_BODY(className) className(std::string objectName) : SActor(objectName) {}  
+
 struct ActorCreateInfo
 {
 	std::string objectName;
@@ -19,5 +21,6 @@ struct ActorCreateInfo
 
 class SActor : public SObject, public IRenderable
 {
-
+public:
+	GENERATED_BODY(SActor)
 };

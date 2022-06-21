@@ -8,8 +8,10 @@ protected:
 	std::vector<SActor*> Actors;
 
 public:
+	SScene(std::string objectName) : SObject(objectName){}
+
 	template <typename _ActorClass>
-	SActor* SpawnActor(const ActorCreateInfo& Info);
+	_ActorClass* SpawnActor(const ActorCreateInfo& Info);
 
 	std::vector<SActor*> GetActors() { return Actors; }
 
@@ -17,12 +19,11 @@ public:
 };
 
 template<typename _ActorClass>
-SActor* SScene::SpawnActor(const ActorCreateInfo& Info)
+_ActorClass* SScene::SpawnActor(const ActorCreateInfo& Info)
 {
-	SActor* Actor = new _ActorClass();
+	_ActorClass* Actor = new _ActorClass(Info.objectName);
 
 	// Initialize
-	Actor->ObjectName = Info.objectName;
 
 	Actors.push_back(Actor);
 	return Actor;
