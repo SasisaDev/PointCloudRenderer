@@ -3,7 +3,7 @@
 #include "Source/PointCloud/PointCloudActor.h"
 #include "Source/Core/UI/UIActor.h"
 
-#include "Source/Core/Renderer/Shader/Shader.h"
+#include "Source/Core/Object/Pipeline/Material.h"
 
 #define VERSION "0.0.1"
 
@@ -29,14 +29,8 @@ int main(int argc, char* argv[])
 	Window* HelpWindow = new Window("Help", 500, 250);
 	PCREngine->AddWindow(HelpWindow);
 
-	Shader shader("testshader");
-
-	//UI
-	//SWidget* TestWidget = new SWidget();
-	//TestWidget->ObjectName = "TestUI";
-	//PCREngine->AddWidget(TestWidget);
-
-	//PCREngine->LoadScene(MainScene);
+	//Shader PostProcessShader("Shaders/PostProcessing");
+	//((OpenGLRenderer*)MainWindow->GetRenderer())->SetPostProcessShader(&PostProcessShader);
 
 	PCREngine->EngineLoop();
 	// Cleanup process
