@@ -11,7 +11,8 @@ public:
 	Engine();
 	static Engine* GEngine;
 
-	void AddWindow(Window* window) { Windows.push_back(window); window->AttachRenderer(new OpenGLRenderer()); }
+	void AddWindow(Window* window);
+	void RemoveWindow(Window* window);
 
 	void EngineLoop();
 };

@@ -9,5 +9,21 @@ protected:
 
 public:
 	template <typename _ActorClass>
-	SActor* SpawnActor(ActorCreateInfo Info);
+	SActor* SpawnActor(const ActorCreateInfo& Info);
+
+	std::vector<SActor*> GetActors() { return Actors; }
+
+	void LoadResources();
 };
+
+template<typename _ActorClass>
+SActor* SScene::SpawnActor(const ActorCreateInfo& Info)
+{
+	SActor* Actor = new _ActorClass();
+
+	// Initialize
+	Actor->ObjectName = Info.objectName;
+
+	Actors.push_back(Actor);
+	return Actor;
+}

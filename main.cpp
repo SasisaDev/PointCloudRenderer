@@ -11,10 +11,14 @@ int main(int argc, char* argv[])
 	Window* MainWindow = new Window("Point Cloud Renderer", 1280, 720);
 
 	SScene* MainScene = new SScene();
+	MainScene->ObjectName = "PointCloudScene";
 	SActor* TestActor = MainScene->SpawnActor<SActor>(ActorCreateInfo("TestActor"));
 	MainWindow->SetScene(MainScene);
 
 	PCREngine->AddWindow(MainWindow);
+
+	Window* HelpWindow = new Window("Help", 500, 250);
+	PCREngine->AddWindow(HelpWindow);
 
 	//UI
 	//SWidget* TestWidget = new SWidget();

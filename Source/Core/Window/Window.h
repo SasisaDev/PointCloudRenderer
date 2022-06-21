@@ -1,11 +1,16 @@
 #pragma once
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include "../Renderer/Renderer.h"
 #include <GLFW/glfw3.h>
 
 #pragma comment(lib, "glfw3.lib")
+#pragma comment(lib, "glew32.lib")
+#pragma comment(lib, "opengl32.lib")
 
 #include <string>
 #include "../Scene/Scene.h"
+#include "../Debug/Logger.h"
 
 class Window
 {
@@ -22,7 +27,11 @@ public:
 	Window(std::string title, int w, int h);
 
 	void AttachRenderer(IRenderer* renderer) { Renderer = renderer; }
-	void SetScene(SScene* scene) { Scene = scene; }
+	IRenderer* GetRenderer() { return Renderer; }
+
+	std::string GetTitle() { return Title; }
+
+	void SetScene(SScene* scene);
 
 	GLFWwindow* GetHandle() { return Handle; }
 };

@@ -8,4 +8,6 @@ class IRenderer
 protected:
 	std::vector<IRenderable*> RenderObjects;
 public:
+
+	virtual int Render();
 };

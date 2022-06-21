@@ -4,5 +4,5 @@ class IRenderable
 {
 public:
 
-	virtual int Render() {}
+	virtual int Render() { return 0; }
 };
