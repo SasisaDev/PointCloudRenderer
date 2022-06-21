@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include "../Debug/Logger.h"
+#include <algorithm>
 #include "IRenderable.h"
 
 class IRenderer
@@ -13,7 +15,7 @@ public:
 
 	bool ShouldResize = false;
 
-	virtual void AddRenderObject(IRenderable* renderable) { RenderObjects.push_back(renderable); }
+	virtual void AddRenderObject(IRenderable* renderable);
 	virtual void ClearRenderObjects() { RenderObjects.clear(); }
 
 	virtual void RendererResized(unsigned int w, unsigned int h) { CanvasWidth = w; CanvasHeight = h; }

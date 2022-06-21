@@ -9,6 +9,5 @@ int SPointCloudActor::Render()
 	glVertex3f(0.5f, -0.5f, 0);
 
 	glEnd();
-
 	return 1;
 }

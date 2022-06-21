@@ -1,6 +1,7 @@
 #include "Source/Core/Engine.h"
 
 #include "Source/PointCloud/PointCloudActor.h"
+#include "Source/Core/UI/UIActor.h"
 
 #define VERSION "0.0.1"
 
@@ -13,8 +14,11 @@ int main(int argc, char* argv[])
 	Window* MainWindow = new Window("Point Cloud Renderer", 1280, 720);
 
 	SScene* MainScene = NewObject<SScene>("MainScene");
-	MainScene->ObjectName = "PointCloudScene";
-	SPointCloudActor* TestActor = MainScene->SpawnActor<SPointCloudActor>(ActorCreateInfo("PointCloudActor"));
+	SPointCloudActor* PointCloud = MainScene->SpawnActor<SPointCloudActor>(ActorCreateInfo("PointCloudActor"));
+	SUIActor* UI = MainScene->SpawnActor<SUIActor>(ActorCreateInfo("UserInterfaceSubsystem"));
+
+	UWidget* TestWidget = CreateWidget<UWidget>("MainWidget", WidgetCreateInfo());
+	UI->Widget = TestWidget;
 
 	PCREngine->AddWindow(MainWindow);
 
