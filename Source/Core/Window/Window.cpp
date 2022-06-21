@@ -38,6 +38,8 @@ void Window::SetScene(SScene* scene)
 	for (auto actor : scene->GetActors())
 	{
 		Renderer->AddRenderObject(actor);
-		Logger::Log("\t" + actor->ObjectName);
+		std::stringstream stream;
+		stream << std::dec << actor->RenderPriority;
+		Logger::Log("\t" + actor->ObjectName + " (" + stream.str() + ")");
 	}
 }

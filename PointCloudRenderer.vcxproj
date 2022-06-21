@@ -147,10 +147,12 @@
     <ClCompile Include="Source\Core\Debug\Logger.cpp" />
     <ClCompile Include="Source\Core\Object\Object.cpp" />
     <ClCompile Include="Source\Core\Engine.cpp" />
+    <ClCompile Include="Source\Core\Object\Pipeline\Material.cpp" />
     <ClCompile Include="Source\Core\Renderer\Buffers\Buffers.cpp" />
     <ClCompile Include="Source\Core\Renderer\IRenderable.cpp" />
     <ClCompile Include="Source\Core\Renderer\Renderer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Renderers\OpenGLRenderer.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="Source\Core\Scene\Actor\Actor.cpp" />
     <ClCompile Include="Source\Core\Scene\Scene.cpp" />
     <ClCompile Include="Source\Core\UI\UIActor.cpp" />
@@ -163,10 +165,12 @@
     <ClInclude Include="Source\Core\Debug\Logger.h" />
     <ClInclude Include="Source\Core\Object\Object.h" />
     <ClInclude Include="Source\Core\Engine.h" />
+    <ClInclude Include="Source\Core\Object\Pipeline\Material.h" />
     <ClInclude Include="Source\Core\Renderer\Buffers\Buffers.h" />
     <ClInclude Include="Source\Core\Renderer\IRenderable.h" />
     <ClInclude Include="Source\Core\Renderer\Renderer.h" />
     <ClInclude Include="Source\Core\Renderer\Renderers\OpenGLRenderer.h" />
+    <ClInclude Include="Source\Core\Renderer\Shader\Shader.h" />
     <ClInclude Include="Source\Core\Scene\Actor\Actor.h" />
     <ClInclude Include="Source\Core\Scene\Scene.h" />
     <ClInclude Include="Source\Core\Types\Transform.h" />

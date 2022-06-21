@@ -3,11 +3,13 @@
 #include "Source/PointCloud/PointCloudActor.h"
 #include "Source/Core/UI/UIActor.h"
 
+#include "Source/Core/Renderer/Shader/Shader.h"
+
 #define VERSION "0.0.1"
 
 int main(int argc, char* argv[])
 {
-	Logger::Log("Point Cloud Renderer Ver " + STEXT(VERSION) + " (OpenGL)");
+	Logger::Log("Point Cloud Renderer Ver " + std::string(VERSION) + " (OpenGL)");
 
 	Engine* PCREngine = new Engine();
 
@@ -26,6 +28,8 @@ int main(int argc, char* argv[])
 
 	Window* HelpWindow = new Window("Help", 500, 250);
 	PCREngine->AddWindow(HelpWindow);
+
+	Shader shader("testshader");
 
 	//UI
 	//SWidget* TestWidget = new SWidget();

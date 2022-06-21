@@ -2,9 +2,10 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 #include <stdarg.h>
 
-#define STEXT(var) std::string(var)
+#define STEXT(x) ( std::stringstream() << std::dec << x ) ).str().c_str()
 
 class Logger
 {
