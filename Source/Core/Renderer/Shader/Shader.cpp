@@ -60,6 +60,9 @@ void Shader::CompileShader(std::string shaderName)
 		Logger::Log(message);
 		return;
 	}
+
+	glDeleteShader(vertShaderID);
+	glDeleteShader(fragShaderID);
 	
 	Logger::Log("Linked shader: \"" + shaderName + "\"");
 }

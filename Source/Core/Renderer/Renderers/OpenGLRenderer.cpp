@@ -1,7 +1,10 @@
 #include "OpenGLRenderer.h"
 
-OpenGLRenderer::OpenGLRenderer()
+OpenGLRenderer::OpenGLRenderer(unsigned int w, unsigned int h)
 {
+	CanvasWidth = w;
+	CanvasHeight = h;
+
 	glActiveTexture(GL_TEXTURE0);
 	glGenTextures(1, &framebufferTexture);
 	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
@@ -22,7 +25,7 @@ OpenGLRenderer::OpenGLRenderer()
 	glGenFramebuffers(1, &framebuffer);
 	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, framebufferTexture, 0);
-	//glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, renderbufferDepth);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, renderbufferDepth);
 	GLenum status;
 	if ((status = glCheckFramebufferStatus(GL_FRAMEBUFFER)) != GL_FRAMEBUFFER_COMPLETE) {
 		fprintf(stderr, "glCheckFramebufferStatus: error %p\n", status);
@@ -78,12 +81,14 @@ int OpenGLRenderer::Render()
 		{
 			renderable->Render();
 		}
+
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 		glClearColor(0.0, 0.0, 0.0f, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glUseProgram(postProcessShader->GetProgramID());
+		glActiveTexture(GL_TEXTURE0 + 0);
 		glBindTexture(GL_TEXTURE_2D, framebufferTexture);
 		glUniform1i(uniform_fbo_texture, 0);
 		glEnableVertexAttribArray(attribute_v_coord_postproc);

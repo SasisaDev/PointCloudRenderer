@@ -9,6 +9,9 @@ _T* NewObject(std::string ObjectName);
 class SObject
 {
 public:
+	SObject(const SObject&) = delete;
+	void operator=(const SObject&) = delete;
+
 	SObject(std::string objectName) : ObjectName(objectName){}
 
 	std::string ObjectName;

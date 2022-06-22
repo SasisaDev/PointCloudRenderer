@@ -18,7 +18,7 @@ Engine::Engine()
 void Engine::AddWindow(Window* window)
 {
 	Windows.push_back(window); 
-	window->AttachRenderer(new OpenGLRenderer());
+	window->AttachRenderer(new OpenGLRenderer(window->GetWidth(), window->GetHeight()));
 
 	Logger::Log("New window created: " + window->GetTitle());
 }

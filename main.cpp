@@ -4,6 +4,7 @@
 #include "Source/Core/UI/UIActor.h"
 
 #include "Source/Core/Object/Pipeline/Material.h"
+#include "Source/Core/Debug/DebugActor.h"
 
 #define VERSION "0.0.1"
 
@@ -18,6 +19,7 @@ int main(int argc, char* argv[])
 	SScene* MainScene = NewObject<SScene>("MainScene");
 	SPointCloudActor* PointCloud = MainScene->SpawnActor<SPointCloudActor>(ActorCreateInfo("PointCloudActor"));
 	SUIActor* UI = MainScene->SpawnActor<SUIActor>(ActorCreateInfo("UserInterfaceSubsystem"));
+	SDebugActor* DbgActor = MainScene->SpawnActor<SDebugActor>(ActorCreateInfo("DebugActor"));
 
 	UWidget* TestWidget = CreateWidget<UWidget>("MainWidget", WidgetCreateInfo());
 	UI->Widget = TestWidget;
@@ -29,8 +31,8 @@ int main(int argc, char* argv[])
 	Window* HelpWindow = new Window("Help", 500, 250);
 	PCREngine->AddWindow(HelpWindow);
 
-	//Shader PostProcessShader("Shaders/PostProcessing");
-	//((OpenGLRenderer*)MainWindow->GetRenderer())->SetPostProcessShader(&PostProcessShader);
+	Shader PostProcessShader("Shaders/PostProcessing");
+	((OpenGLRenderer*)MainWindow->GetRenderer())->SetPostProcessShader(&PostProcessShader);
 
 	PCREngine->EngineLoop();
 	// Cleanup process

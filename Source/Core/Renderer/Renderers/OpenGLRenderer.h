@@ -18,7 +18,7 @@ protected:
 	unsigned int attribute_v_coord_postproc, uniform_fbo_texture;;
 	
 public:
-	OpenGLRenderer();
+	OpenGLRenderer(unsigned int w, unsigned int h);
 	~OpenGLRenderer();
 
 	virtual void RendererResized(unsigned int w, unsigned int h) override;

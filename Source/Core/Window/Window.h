@@ -30,6 +30,9 @@ public:
 
 	std::string GetTitle() { return Title; }
 
+	int GetWidth() const { return Width; }
+	int GetHeight() const { return Height; }
+
 	void SetScene(SScene* scene);
 
 	GLFWwindow* GetHandle() { return Handle; }

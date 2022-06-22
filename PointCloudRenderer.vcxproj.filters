@@ -69,6 +69,12 @@
     <ClCompile Include="Source\Core\IO\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Core\Debug\DebugActor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Object\Pipeline\Texture2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Engine.h">
@@ -125,11 +131,19 @@
     <ClInclude Include="Source\Core\IO\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Core\Debug\DebugActor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Object\Pipeline\Texture2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\PostProcessing.frag" />
     <None Include="Shaders\PostProcessing.vert" />
     <None Include="Shaders\UI\Brush.vert" />
     <None Include="Shaders\UI\Brush.frag" />
+    <None Include="Shaders\Debug\Debug.vert" />
+    <None Include="Shaders\Debug\Debug.frag" />
   </ItemGroup>
 </Project>
