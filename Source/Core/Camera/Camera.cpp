@@ -1,10 +1,12 @@
 #include "Camera.h"
 
+#include <algorithm>
+
 CameraModel SCameraActor::CalculateModel()
 {
 	CameraModel model;
 
-	model.Projection = glm::perspective(60.0f, Width / Height, 1.0f, 150.0f);
+	model.Projection = glm::perspective(60.0f, std::clamp<float>(Width / Height, 0.01, 100), 1.0f, 150.0f);
 	model.View = glm::translate(glm::mat4(1.0f), ActorConfig.transform.Location);
 
 	model.View = glm::rotate(model.View, ActorConfig.transform.Rotation.x, glm::vec3(1, 0, 0));
