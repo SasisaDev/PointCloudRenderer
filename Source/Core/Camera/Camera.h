@@ -17,9 +17,12 @@ public:
 public:
 	bool bTargetCamera = false;
 	glm::vec3 cameraTarget;
+
+	float Width = 1280, Height = 720;
 public:
 	
 	CameraModel CalculateModel();
 
 	virtual void Update(float DeltaTime) override;
+	virtual void OnEvent(const Event& event) override;
 };

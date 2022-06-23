@@ -63,11 +63,12 @@ void LayerStack::RenderAll()
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
 
-	glClearColor(0, 0, 0, 1.0);
+	glClearColor(0.075, 0.075, 0.075, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for (auto layer : layers)
 	{
+		layer->OnUpdate();
 		layer->Render(framebuffer);
 	}
 
@@ -89,6 +90,8 @@ void LayerStack::RenderAll()
 		0,                  // no extra data between each position
 		0                   // offset of first element
 	);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glUseProgram(0);
 	glDisableVertexAttribArray(glGetAttribLocation(LayerStackShader->GetProgramID(), "v_coord"));
 }
 

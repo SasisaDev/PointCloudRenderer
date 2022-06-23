@@ -18,7 +18,8 @@ int main(int argc, char* argv[])
 
 	SScene* MainScene = NewObject<SScene>("MainScene");
 	SPointCloudActor* PointCloud = MainScene->SpawnActor<SPointCloudActor>(ActorCreateInfo("PointCloudActor"));
-	SDebugActor* DbgActor = MainScene->SpawnActor<SDebugActor>(ActorCreateInfo("DebugActor"));
+	//SDebugActor* DbgActor = MainScene->SpawnActor<SDebugActor>(ActorCreateInfo("DebugActor"));
+	SCameraActor* Camera = MainScene->SpawnActor<SCameraActor>(ActorCreateInfo("Camera"));
 
 	SCameraSubsystem* CamSystem = MainScene->CreateSubsystem<SCameraSubsystem>();
 

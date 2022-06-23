@@ -41,6 +41,7 @@ void SceneLayer::Render(unsigned int framebuffer)
 	}
 
 	glDisable(GL_DEPTH_TEST);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 void SceneLayer::OnEvent(const Event& e)

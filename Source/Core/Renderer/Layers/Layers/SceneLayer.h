@@ -11,8 +11,6 @@ struct SceneUniformBuffer
 {
 	glm::mat4 Projection;
 	glm::mat4 View;
-	glm::vec3 CamPosition;
-	glm::vec3 CamRotation;
 };
 
 class SceneLayer : public Layer

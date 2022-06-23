@@ -100,7 +100,7 @@ void Engine::EngineLoop()
 {
 	glfwMakeContextCurrent(window->GetHandle());
 
-	glClearColor(0.075f, 0.075f, 0.075f, 1);
+	glClearColor(0, 0, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT);
 	/*if (Renderer->ShouldResize)
 	{
