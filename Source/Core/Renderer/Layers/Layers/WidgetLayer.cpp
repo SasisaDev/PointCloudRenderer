@@ -21,6 +21,8 @@ void WidgetLayer::Render(unsigned int framebuffer)
 	{
 		widget->Render();
 	}
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 void WidgetLayer::OnEvent(const Event& e)

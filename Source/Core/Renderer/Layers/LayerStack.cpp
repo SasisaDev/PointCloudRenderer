@@ -80,7 +80,6 @@ void LayerStack::RenderAll()
 	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
 	glUniform1i(glGetUniformLocation(LayerStackShader->GetProgramID(), "fbo_texture\0"), 0);
 	glEnableVertexAttribArray(glGetAttribLocation(LayerStackShader->GetProgramID(), "v_coord"));
-
 	glVertexAttribPointer(
 		glGetAttribLocation(LayerStackShader->GetProgramID(), "v_coord"),  // attribute
 		2,                  // number of elements per vertex, here (x,y)
@@ -102,6 +101,8 @@ void LayerStack::DispatchAll(const Event& e)
 	{
 		Width = reinterpret_cast<int>(e.Parameters[0]);
 		Height = reinterpret_cast<int>(e.Parameters[1]);
+
+		glViewport(0, 0, Width, Height);
 
 		glBindTexture(GL_TEXTURE_2D, framebufferTexture);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
