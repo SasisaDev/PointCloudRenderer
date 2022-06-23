@@ -12,5 +12,5 @@ public:
 
 	SPointCloudAsset* PointCloud;
 
-	virtual int Render() override;
+	virtual int Render(const CameraModel& camera) override;
 };

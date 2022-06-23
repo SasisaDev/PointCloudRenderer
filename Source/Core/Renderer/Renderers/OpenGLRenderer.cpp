@@ -53,6 +53,13 @@ OpenGLRenderer::~OpenGLRenderer()
 	glDeleteBuffers(1, &vbo_fbo_vertices);
 }
 
+void OpenGLRenderer::SetWindowPointer(Window* win)
+{
+	ParentWindow = win;
+
+	Camera = ParentWindow->GetScene()->GetSubsystem<SCameraSubsystem>();
+}
+
 void OpenGLRenderer::RendererResized(unsigned int w, unsigned int h)
 {
 	IRenderer::RendererResized(w, h);
@@ -77,10 +84,7 @@ int OpenGLRenderer::Render()
 		glClearColor(0.075f, 0.075f, 0.075f, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		for (auto renderable : RenderObjects)
-		{
-			renderable->Render();
-		}
+		GuardedRender();
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
@@ -107,9 +111,25 @@ int OpenGLRenderer::Render()
 	}
 	else
 	{
-		for (auto renderable : RenderObjects)
+		GuardedRender();
+	}
+	return 0;
+}
+
+int OpenGLRenderer::GuardedRender()
+{
+	if (Camera)
+	{
+		for (IRenderable* renderable : RenderObjects)
 		{
-			renderable->Render();
+			renderable->Render(Camera->Camera->CalculateModel());
+		}
+	}
+	else
+	{
+		for (IRenderable* renderable : RenderObjects)
+		{
+			renderable->Render(CameraModel());
 		}
 	}
 	return 0;

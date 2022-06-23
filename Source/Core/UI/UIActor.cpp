@@ -1,6 +1,6 @@
 #include "UIActor.h"
 
-int SUIActor::Render()
+int SUIActor::Render(const CameraModel& camera)
 {
 	if (Widget)
 	{

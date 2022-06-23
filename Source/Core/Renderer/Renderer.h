@@ -5,15 +5,20 @@
 #include <algorithm>
 #include "IRenderable.h"
 
+class Window;
+
 class IRenderer
 {
 protected:
 	std::vector<IRenderable*> RenderObjects;
+	Window* ParentWindow;
 
 	unsigned int CanvasWidth, CanvasHeight;
 public:
 
 	bool ShouldResize = false;
+
+	virtual void SetWindowPointer(Window* win) { ParentWindow = win; }
 
 	virtual void AddRenderObject(IRenderable* renderable);
 	virtual void ClearRenderObjects() { RenderObjects.clear(); }

@@ -4,6 +4,7 @@
 
 #include "../Types/Transform.h"
 #include "../Window/Window.h"
+#include "../Events/Event.h"
 
 #include <vector>
 
@@ -55,6 +56,7 @@ public:
 	void Render();
 
 	virtual void OnPaint();
+	virtual void OnEvent(const Event& event) {}
 };
 
 template <typename _T>

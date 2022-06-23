@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -144,15 +144,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Source\Core\Application.cpp" />
+    <ClCompile Include="Source\Core\Camera\Camera.cpp" />
+    <ClCompile Include="Source\Core\Camera\CameraSubsystem.cpp" />
     <ClCompile Include="Source\Core\Debug\DebugActor.cpp" />
     <ClCompile Include="Source\Core\Debug\Logger.cpp" />
-    <ClCompile Include="Source\Core\IO\Input.cpp" />
+    <ClCompile Include="Source\Core\Events\Event.cpp" />
+    <ClCompile Include="Source\Core\Events\EventDispatcher.cpp" />
     <ClCompile Include="Source\Core\Object\Object.cpp" />
     <ClCompile Include="Source\Core\Engine.cpp" />
     <ClCompile Include="Source\Core\Object\Pipeline\Material.cpp" />
     <ClCompile Include="Source\Core\Object\Pipeline\Texture2D.cpp" />
     <ClCompile Include="Source\Core\Renderer\Buffers\Buffers.cpp" />
     <ClCompile Include="Source\Core\Renderer\IRenderable.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Layers\Layer.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Layers\LayerStack.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Layers\Layers\SceneLayer.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Layers\Layers\WidgetLayer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Renderer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Renderers\OpenGLRenderer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Shader\Shader.cpp" />
@@ -165,15 +173,24 @@
     <ClCompile Include="Source\PointCloud\PointCloudAsset.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Core\Application.h" />
+    <ClInclude Include="Source\Core\Camera\Camera.h" />
+    <ClInclude Include="Source\Core\Camera\CameraSubsystem.h" />
     <ClInclude Include="Source\Core\Debug\DebugActor.h" />
     <ClInclude Include="Source\Core\Debug\Logger.h" />
-    <ClInclude Include="Source\Core\IO\Input.h" />
+    <ClInclude Include="Source\Core\Events\Event.h" />
+    <ClInclude Include="Source\Core\Events\EventDispatcher.h" />
     <ClInclude Include="Source\Core\Object\Object.h" />
     <ClInclude Include="Source\Core\Engine.h" />
     <ClInclude Include="Source\Core\Object\Pipeline\Material.h" />
     <ClInclude Include="Source\Core\Object\Pipeline\Texture2D.h" />
+    <ClInclude Include="Source\Core\Object\Subsystem.h" />
     <ClInclude Include="Source\Core\Renderer\Buffers\Buffers.h" />
     <ClInclude Include="Source\Core\Renderer\IRenderable.h" />
+    <ClInclude Include="Source\Core\Renderer\Layers\Layer.h" />
+    <ClInclude Include="Source\Core\Renderer\Layers\LayerStack.h" />
+    <ClInclude Include="Source\Core\Renderer\Layers\Layers\SceneLayer.h" />
+    <ClInclude Include="Source\Core\Renderer\Layers\Layers\WidgetLayer.h" />
     <ClInclude Include="Source\Core\Renderer\Renderer.h" />
     <ClInclude Include="Source\Core\Renderer\Renderers\OpenGLRenderer.h" />
     <ClInclude Include="Source\Core\Renderer\Shader\Shader.h" />
@@ -189,6 +206,8 @@
   <ItemGroup>
     <None Include="Shaders\Debug\Debug.frag" />
     <None Include="Shaders\Debug\Debug.vert" />
+    <None Include="Shaders\PointCloud\Point.frag" />
+    <None Include="Shaders\PointCloud\Point.vert" />
     <None Include="Shaders\PostProcessing.frag" />
     <None Include="Shaders\PostProcessing.vert" />
     <None Include="Shaders\UI\Brush.frag" />

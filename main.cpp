@@ -5,6 +5,7 @@
 
 #include "Source/Core/Object/Pipeline/Material.h"
 #include "Source/Core/Debug/DebugActor.h"
+#include "Source/Core/Camera/CameraSubsystem.h"
 
 #define VERSION "0.0.1"
 
@@ -20,6 +21,8 @@ int main(int argc, char* argv[])
 	SPointCloudActor* PointCloud = MainScene->SpawnActor<SPointCloudActor>(ActorCreateInfo("PointCloudActor"));
 	SUIActor* UI = MainScene->SpawnActor<SUIActor>(ActorCreateInfo("UserInterfaceSubsystem"));
 	SDebugActor* DbgActor = MainScene->SpawnActor<SDebugActor>(ActorCreateInfo("DebugActor"));
+
+	SCameraSubsystem* CamSystem = MainScene->CreateSubsystem<SCameraSubsystem>();
 
 	UWidget* TestWidget = CreateWidget<UWidget>("MainWidget", WidgetCreateInfo());
 	UI->Widget = TestWidget;

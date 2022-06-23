@@ -1,21 +1,44 @@
 #include "Engine.h"
 
-Engine* Engine::GEngine = nullptr;
-
 Engine::Engine()
 {
-	if (GEngine == nullptr)
+	if (!glfwInit())
 	{
-		if (!glfwInit())
-		{
-			throw std::exception("GLFW initialization failed");
-		}
-
-		Engine::GEngine = this;
+		throw std::exception("GLFW initialization failed");
 	}
 }
 
-void Engine::AddWindow(Window* window)
+void Engine::SetWindow(Window* win)
+{
+	window = win;
+}
+
+void Engine::SetScene(SScene* scene)
+{
+	Scene = scene;
+
+	if (SceneLayer* layer = layerStack->GetLayer<SceneLayer>())
+	{
+		layer->SetScene(scene);
+	}
+
+	Logger::Log("Loaded scene: " + scene->ObjectName);
+	Logger::Log("Loaded actors: ");
+	for (auto actor : scene->GetActors())
+	{
+		//Renderer->AddRenderObject(actor);
+		std::stringstream stream;
+		stream << std::dec << actor->RenderPriority;
+		Logger::Log("\t" + actor->ObjectName + " (" + stream.str() + ")");
+	}
+	Logger::Log("Loaded Subsystems: ");
+	for (auto Subsystem : scene->GetSubsystems())
+	{
+		Logger::Log("\t" + Subsystem->ObjectName);
+	}
+}
+
+/*void Engine::AddWindow(Window* window)
 {
 	Windows.push_back(window); 
 	window->AttachRenderer(new OpenGLRenderer(window->GetWidth(), window->GetHeight()));
@@ -40,42 +63,31 @@ void Engine::RemoveWindow(Window* window)
 		}
 	}
 	Windows = newWins;
-}
+}*/
 
 void Engine::EngineLoop()
 {
-	if (Windows.size() > 0)
+	glfwMakeContextCurrent(window->GetHandle());
+
+	glClearColor(0.075f, 0.075f, 0.075f, 1);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	if (IRenderer* Renderer = window->GetRenderer())
 	{
-		while (!glfwWindowShouldClose(Windows[0]->GetHandle()))
+		if (Renderer->ShouldResize)
 		{
-			for (auto window : Windows)
-			{
-				if (glfwWindowShouldClose(window->GetHandle()))
-				{
-					RemoveWindow(window);
-				}
-				else
-				{
-					glfwMakeContextCurrent(window->GetHandle());
-
-					glClearColor(0.075f, 0.075f, 0.075f, 1);
-					glClear(GL_COLOR_BUFFER_BIT);
-
-					if (IRenderer* Renderer = window->GetRenderer())
-					{
-						if (Renderer->ShouldResize)
-						{
-							glViewport(0, 0, Renderer->GetCnavasWidth(), Renderer->GetCnavasHeight());
-							Renderer->ShouldResize = false;
-						}
-
-						Renderer->Render();
-					}
-
-					glfwSwapBuffers(window->GetHandle());
-					glfwPollEvents();
-				}
-			}
+			glViewport(0, 0, Renderer->GetCnavasWidth(), Renderer->GetCnavasHeight());
+			Renderer->ShouldResize = false;
 		}
+
+		if (SScene* scene = window->GetScene())
+		{
+			scene->Update(1);
+		}
+
+		Renderer->Render();
 	}
+
+	glfwSwapBuffers(window->GetHandle());
+	glfwPollEvents();
 }

@@ -5,7 +5,7 @@ Window::Window(std::string title, int w, int h)
 {
 	Handle = glfwCreateWindow(w, h, title.c_str(), NULL, NULL);
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -29,17 +29,3 @@ Window::Window(std::string title, int w, int h)
 	}
 }
 
-void Window::SetScene(SScene* scene)
-{ 
-	Scene = scene;
-
-	Logger::Log("Loaded scene: " + scene->ObjectName);
-	Logger::Log("Loaded actors: ");
-	for (auto actor : scene->GetActors())
-	{
-		Renderer->AddRenderObject(actor);
-		std::stringstream stream;
-		stream << std::dec << actor->RenderPriority;
-		Logger::Log("\t" + actor->ObjectName + " (" + stream.str() + ")");
-	}
-}

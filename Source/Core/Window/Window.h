@@ -17,23 +17,19 @@ protected:
 	GLFWwindow* Handle;
 
 	IRenderer* Renderer = nullptr;
-	
-	SScene* Scene = nullptr;
 
 	std::string Title;
 	int Width = 0, Height = 0;
 public:
 	Window(std::string title, int w, int h);
 
-	void AttachRenderer(IRenderer* renderer) { Renderer = renderer; }
+	void AttachRenderer(IRenderer* renderer) { Renderer = renderer; renderer->SetWindowPointer(this); }
 	IRenderer* GetRenderer() { return Renderer; }
 
 	std::string GetTitle() { return Title; }
 
 	int GetWidth() const { return Width; }
 	int GetHeight() const { return Height; }
-
-	void SetScene(SScene* scene);
 
 	GLFWwindow* GetHandle() { return Handle; }
 };
