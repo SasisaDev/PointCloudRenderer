@@ -55,6 +55,8 @@ public:
 
 	void Render();
 
+	virtual void Update(float DeltaTime);
+
 	virtual void OnPaint();
 	virtual void OnEvent(const Event& event) {}
 };

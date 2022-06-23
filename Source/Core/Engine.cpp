@@ -1,11 +1,20 @@
 #include "Engine.h"
 
-Engine::Engine()
+Engine::Engine(std::string Title, int width, int height, uint8_t layers)
 {
-	if (!glfwInit())
+	window = new Window(Title, width, height);
+
+	layerStack = new LayerStack(width, height);
+
+	if ((layers & LAYER_SCENE) == LAYER_SCENE)
 	{
-		throw std::exception("GLFW initialization failed");
+		layerStack->AddLayer(new SceneLayer());
 	}
+	if ((layers & LAYER_WIDGET) == LAYER_WIDGET)
+	{
+		layerStack->AddLayer(new WidgetLayer());
+	}
+
 }
 
 void Engine::SetWindow(Window* win)
@@ -13,9 +22,9 @@ void Engine::SetWindow(Window* win)
 	window = win;
 }
 
-void Engine::SetScene(SScene* scene)
+void Engine::SetScene(SScene* Scene)
 {
-	Scene = scene;
+	scene = Scene;
 
 	if (SceneLayer* layer = layerStack->GetLayer<SceneLayer>())
 	{
@@ -71,22 +80,23 @@ void Engine::EngineLoop()
 
 	glClearColor(0.075f, 0.075f, 0.075f, 1);
 	glClear(GL_COLOR_BUFFER_BIT);
-
-	if (IRenderer* Renderer = window->GetRenderer())
+	/*if (Renderer->ShouldResize)
 	{
-		if (Renderer->ShouldResize)
-		{
-			glViewport(0, 0, Renderer->GetCnavasWidth(), Renderer->GetCnavasHeight());
-			Renderer->ShouldResize = false;
-		}
+		glViewport(0, 0, Renderer->GetCnavasWidth(), Renderer->GetCnavasHeight());
+		Renderer->ShouldResize = false;
+	}*/
 
-		if (SScene* scene = window->GetScene())
-		{
-			scene->Update(1);
-		}
-
-		Renderer->Render();
+	if (scene)
+	{
+		scene->Update(1);
 	}
+	
+	for (UWidget* widget : widgets)
+	{
+		widget->Update(1);
+	}
+
+	layerStack->RenderAll();
 
 	glfwSwapBuffers(window->GetHandle());
 	glfwPollEvents();

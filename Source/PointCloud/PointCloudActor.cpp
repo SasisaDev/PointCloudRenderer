@@ -1,6 +1,6 @@
 #include "PointCloudActor.h"
 
-int SPointCloudActor::Render(const CameraModel& camera)
+int SPointCloudActor::Render()
 {
 	
 	return 1;

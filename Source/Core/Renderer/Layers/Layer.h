@@ -13,7 +13,7 @@ public:
 	// Applied on state update
 	virtual void OnUpdate() {}
 	// Called for render
-	virtual void Render() {}
+	virtual void Render(unsigned int framebuffer) {}
 	// Event dispatcher events
 	virtual void OnEvent(const Event& e) {}
 };

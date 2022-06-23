@@ -57,7 +57,7 @@ void OpenGLRenderer::SetWindowPointer(Window* win)
 {
 	ParentWindow = win;
 
-	Camera = ParentWindow->GetScene()->GetSubsystem<SCameraSubsystem>();
+	//Camera = ParentWindow->GetScene()->GetSubsystem<SCameraSubsystem>();
 }
 
 void OpenGLRenderer::RendererResized(unsigned int w, unsigned int h)
@@ -122,14 +122,14 @@ int OpenGLRenderer::GuardedRender()
 	{
 		for (IRenderable* renderable : RenderObjects)
 		{
-			renderable->Render(Camera->Camera->CalculateModel());
+			renderable->Render();
 		}
 	}
 	else
 	{
 		for (IRenderable* renderable : RenderObjects)
 		{
-			renderable->Render(CameraModel());
+			renderable->Render();
 		}
 	}
 	return 0;

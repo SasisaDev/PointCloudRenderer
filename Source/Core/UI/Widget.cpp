@@ -28,6 +28,10 @@ void UWidget::Render()
 	}
 }
 
+void UWidget::Update(float DeltaTime)
+{
+}
+
 void UWidget::OnPaint()
 {
 }

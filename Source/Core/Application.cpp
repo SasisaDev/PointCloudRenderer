@@ -1,8 +1,20 @@
 #include "Application.h"
 
+Application::Application()
+{
+	if (!glfwInit())
+	{
+		throw std::exception("GLFW initialization failed");
+	}
+}
+
 Engine* Application::CreateEngine(std::string Title, int width, int height)
 {
-	return nullptr;
+	Engine* engine = new Engine(Title, width, height);
+	glfwMakeContextCurrent(engine->GetWindow()->GetHandle());
+	engines.push_back(engine);
+
+	return engine;
 }
 
 void Application::Loop()

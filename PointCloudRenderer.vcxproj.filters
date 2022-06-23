@@ -54,9 +54,6 @@
     <ClCompile Include="Source\PointCloud\PointCloudAsset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Core\UI\UIActor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Core\UI\Widget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -140,9 +137,6 @@
     <ClInclude Include="Source\PointCloud\PointCloudAsset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Core\UI\UIActor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Core\UI\Widget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -198,5 +192,7 @@
     <None Include="Shaders\Debug\Debug.frag" />
     <None Include="Shaders\PointCloud\Point.vert" />
     <None Include="Shaders\PointCloud\Point.frag" />
+    <None Include="Shaders\LayerStack.vert" />
+    <None Include="Shaders\LayerStack.frag" />
   </ItemGroup>
 </Project>

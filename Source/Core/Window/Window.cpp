@@ -17,7 +17,7 @@ Window::Window(std::string title, int w, int h)
 			Window* window = reinterpret_cast<Window*>(glfwGetWindowUserPointer(win));
 			if (window)
 			{
-				window->GetRenderer()->RendererResized(w, h);
+				//window->;
 			}
 		});
 

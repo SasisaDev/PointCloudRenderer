@@ -1,7 +1,6 @@
-#include "Source/Core/Engine.h"
+#include "Source/Core/Application.h"
 
 #include "Source/PointCloud/PointCloudActor.h"
-#include "Source/Core/UI/UIActor.h"
 
 #include "Source/Core/Object/Pipeline/Material.h"
 #include "Source/Core/Debug/DebugActor.h"
@@ -13,33 +12,24 @@ int main(int argc, char* argv[])
 {
 	Logger::Log("Point Cloud Renderer Ver " + std::string(VERSION) + " (OpenGL)");
 
-	Engine* PCREngine = new Engine();
+	Application* App = new Application();
 
-	Window* MainWindow = new Window("Point Cloud Renderer", 1280, 720);
+	Engine* PCREngine = App->CreateEngine("Cloud Point Renderer", 1280, 720);
 
 	SScene* MainScene = NewObject<SScene>("MainScene");
 	SPointCloudActor* PointCloud = MainScene->SpawnActor<SPointCloudActor>(ActorCreateInfo("PointCloudActor"));
-	SUIActor* UI = MainScene->SpawnActor<SUIActor>(ActorCreateInfo("UserInterfaceSubsystem"));
 	SDebugActor* DbgActor = MainScene->SpawnActor<SDebugActor>(ActorCreateInfo("DebugActor"));
 
 	SCameraSubsystem* CamSystem = MainScene->CreateSubsystem<SCameraSubsystem>();
 
 	UWidget* TestWidget = CreateWidget<UWidget>("MainWidget", WidgetCreateInfo());
-	UI->Widget = TestWidget;
+	//PCREngine->AddWidget();
 
-	PCREngine->AddWindow(MainWindow);
+	PCREngine->SetScene(MainScene);
 
-	MainWindow->SetScene(MainScene);
-
-	Window* HelpWindow = new Window("Help", 500, 250);
-	PCREngine->AddWindow(HelpWindow);
-
-	Shader PostProcessShader("Shaders/PostProcessing");
-	((OpenGLRenderer*)MainWindow->GetRenderer())->SetPostProcessShader(&PostProcessShader);
-
-	PCREngine->EngineLoop();
+	App->Loop();
 	// Cleanup process
 
-	delete PCREngine;
+	delete App;
 	return 0;
 }

@@ -166,7 +166,6 @@
     <ClCompile Include="Source\Core\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="Source\Core\Scene\Actor\Actor.cpp" />
     <ClCompile Include="Source\Core\Scene\Scene.cpp" />
-    <ClCompile Include="Source\Core\UI\UIActor.cpp" />
     <ClCompile Include="Source\Core\UI\Widget.cpp" />
     <ClCompile Include="Source\Core\Window\Window.cpp" />
     <ClCompile Include="Source\PointCloud\PointCloudActor.cpp" />
@@ -197,7 +196,6 @@
     <ClInclude Include="Source\Core\Scene\Actor\Actor.h" />
     <ClInclude Include="Source\Core\Scene\Scene.h" />
     <ClInclude Include="Source\Core\Types\Transform.h" />
-    <ClInclude Include="Source\Core\UI\UIActor.h" />
     <ClInclude Include="Source\Core\UI\Widget.h" />
     <ClInclude Include="Source\Core\Window\Window.h" />
     <ClInclude Include="Source\PointCloud\PointCloudActor.h" />
@@ -206,6 +204,8 @@
   <ItemGroup>
     <None Include="Shaders\Debug\Debug.frag" />
     <None Include="Shaders\Debug\Debug.vert" />
+    <None Include="Shaders\LayerStack.frag" />
+    <None Include="Shaders\LayerStack.vert" />
     <None Include="Shaders\PointCloud\Point.frag" />
     <None Include="Shaders\PointCloud\Point.vert" />
     <None Include="Shaders\PostProcessing.frag" />
