@@ -5,6 +5,7 @@
 #include "Window/Window.h"
 #include "Renderer/Renderers/OpenGLRenderer.h"
 #include "Debug/Logger.h"
+#include "Events/EventDispatcher.h"
 #include "Renderer/Layers/LayerStack.h"
 #include "Renderer/Layers/Layers/SceneLayer.h"
 #include "Renderer/Layers/Layers/WidgetLayer.h"
@@ -23,6 +24,7 @@ protected:
 	SScene* scene = nullptr;
 	LayerStack* layerStack;
 	std::vector<UWidget*> widgets;
+	EventDispatcher eventDispatcher;
 public:
 	Engine(std::string Title, int width, int height, uint8_t layers = LAYER_SCENE | LAYER_WIDGET);
 
@@ -31,6 +33,8 @@ public:
 
 	void SetScene(SScene* Scene);
 	SScene* GetScene() { return scene; }
+
+	void DispatchEvents(const Event& event);
 
 	void EngineLoop();
 };

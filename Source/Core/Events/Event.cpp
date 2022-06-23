@@ -1,5 +1,11 @@
 #include "Event.h"
 
+Event::Event(unsigned int Action, std::vector<void*> Params)
+{
+	EventAction = Action;
+	Parameters = Params;
+}
+
 bool Event::IsKey(int key)
 {
 	if (EventAction == EVENT_KEY_DOWN || EventAction == EVENT_KEY_UP)

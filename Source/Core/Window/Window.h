@@ -10,6 +10,7 @@
 #include <string>
 #include "../Scene/Scene.h"
 #include "../Debug/Logger.h"
+#include "../Events/EventDispatcher.h"
 
 class Window
 {
@@ -17,6 +18,7 @@ protected:
 	GLFWwindow* Handle;
 
 	IRenderer* Renderer = nullptr;
+	EventDispatcher* eventDispatcher;
 
 	std::string Title;
 	int Width = 0, Height = 0;
@@ -25,6 +27,9 @@ public:
 
 	void AttachRenderer(IRenderer* renderer) { Renderer = renderer; renderer->SetWindowPointer(this); }
 	IRenderer* GetRenderer() { return Renderer; }
+
+	void AttachEventDispatcher(EventDispatcher* dispatcher) { eventDispatcher = dispatcher; }
+	EventDispatcher* GetEventDispatcher() { return eventDispatcher; }
 
 	std::string GetTitle() { return Title; }
 

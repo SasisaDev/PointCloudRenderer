@@ -17,5 +17,7 @@ public:
 	unsigned int EventAction;
 	std::vector<void*> Parameters;
 
+	Event(unsigned int Action, std::vector<void*> Params);
+
 	bool IsKey(int key);
 };

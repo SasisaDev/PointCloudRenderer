@@ -94,8 +94,11 @@ void LayerStack::RenderAll()
 
 void LayerStack::DispatchAll(const Event& e)
 {
-	if (e.EventAction == EVENT_WINDOW_RESIZE)
+	if (e.EventAction == EVENT_WINDOW_RESIZE && e.Parameters.size() >= 2)
 	{
+		Width = reinterpret_cast<int>(e.Parameters[0]);
+		Height = reinterpret_cast<int>(e.Parameters[1]);
+
 		glBindTexture(GL_TEXTURE_2D, framebufferTexture);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
 		glBindTexture(GL_TEXTURE_2D, 0);

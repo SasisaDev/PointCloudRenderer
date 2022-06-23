@@ -3,6 +3,7 @@
 Engine::Engine(std::string Title, int width, int height, uint8_t layers)
 {
 	window = new Window(Title, width, height);
+	window->AttachEventDispatcher(&eventDispatcher);
 
 	layerStack = new LayerStack(width, height);
 
@@ -15,6 +16,9 @@ Engine::Engine(std::string Title, int width, int height, uint8_t layers)
 		layerStack->AddLayer(new WidgetLayer());
 	}
 
+	eventDispatcher.Subscribe([this](const Event& event) {
+		DispatchEvents(event);
+	});
 }
 
 void Engine::SetWindow(Window* win)
@@ -73,6 +77,24 @@ void Engine::RemoveWindow(Window* window)
 	}
 	Windows = newWins;
 }*/
+
+void Engine::DispatchEvents(const Event& event)
+{
+	if (scene)
+	{
+		scene->DispatchEvent(event);
+	}
+
+	if (layerStack)
+	{
+		layerStack->DispatchAll(event);
+	}
+
+	for (auto widget : widgets)
+	{
+		widget->OnEvent(event);
+	}
+}
 
 void Engine::EngineLoop()
 {

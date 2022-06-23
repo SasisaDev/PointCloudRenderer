@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\glm;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Valera\source\repos\PointCloudRenderer\deps;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glm;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\lib\Release\Win32;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -164,6 +164,7 @@
     <ClCompile Include="Source\Core\Renderer\Renderer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Renderers\OpenGLRenderer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Shader\Shader.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Texture\Texture2D.cpp" />
     <ClCompile Include="Source\Core\Scene\Actor\Actor.cpp" />
     <ClCompile Include="Source\Core\Scene\Scene.cpp" />
     <ClCompile Include="Source\Core\UI\Widget.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Source\Core\Renderer\Renderer.h" />
     <ClInclude Include="Source\Core\Renderer\Renderers\OpenGLRenderer.h" />
     <ClInclude Include="Source\Core\Renderer\Shader\Shader.h" />
+    <ClInclude Include="Source\Core\Renderer\Texture\Texture2D.h" />
     <ClInclude Include="Source\Core\Scene\Actor\Actor.h" />
     <ClInclude Include="Source\Core\Scene\Scene.h" />
     <ClInclude Include="Source\Core\Types\Transform.h" />

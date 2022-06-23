@@ -2,12 +2,28 @@
 
 #include "../Layer.h"
 #include "../../../Scene/Scene.h"
+#include "../../Buffers/Buffers.h"
+#include "../../../Camera/Camera.h"
 #include <GL/glew.h>
+
+// TODO: Make it accessable directly from Camera
+struct SceneUniformBuffer
+{
+	glm::mat4 Projection;
+	glm::mat4 View;
+	glm::vec3 CamPosition;
+	glm::vec3 CamRotation;
+};
 
 class SceneLayer : public Layer
 {
+protected:
 	SScene* _scene;
+
+	UniformBuffer* Uniform;
 public:
+	SceneLayer();
+
 	void SetScene(SScene* scene) { _scene = scene; }
 
 	virtual void OnAttach();

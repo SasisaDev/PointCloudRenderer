@@ -17,7 +17,10 @@ Window::Window(std::string title, int w, int h)
 			Window* window = reinterpret_cast<Window*>(glfwGetWindowUserPointer(win));
 			if (window)
 			{
-				//window->;
+				if (auto dispatcher = window->GetEventDispatcher())
+				{
+					dispatcher->Dispatch(Event(EVENT_WINDOW_RESIZE, std::vector<void*>{reinterpret_cast<void*>(w), reinterpret_cast<void*>(h)}));
+				}
 			}
 		});
 
