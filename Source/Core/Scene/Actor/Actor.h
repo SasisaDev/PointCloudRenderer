@@ -6,7 +6,7 @@
 
 #include "../../Types/Transform.h"
 
-#define GENERATED_ACTOR_BODY(className) className(std::string objectName) : SActor(objectName) {}  
+#define GENERATED_ACTOR_BODY(className) className(std::string objectName) : SActor(objectName)
 
 typedef struct ActorCreateInfo
 {

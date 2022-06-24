@@ -7,11 +7,11 @@ CameraModel SCameraActor::CalculateModel()
 {
 	CameraModel model;
 
-	//model.Projection = glm::perspective(glm::radians(45.0f), Width / std::clamp(Height, std::numeric_limits<float>::epsilon(), 9169.0f), 0.1f, 150.0f);
+	model.Projection = glm::perspective(glm::radians(45.0f), Width / std::clamp(Height, std::numeric_limits<float>::epsilon(), 9169.0f), 0.1f, 100000.0f);
 	//const float aspect = Width / Height;
 	//glm::ortho(-1.0f, 1.0f, -1.0f * aspect, 1.0f * aspect, 0.1f, 100.0f);
 
-	model.Projection = glm::mat4(1.0f);
+	//model.Projection = glm::mat4(1.0f);
 
 	model.View = glm::translate(glm::mat4(1.0f), ActorConfig.transform.Location);
 
@@ -24,7 +24,7 @@ CameraModel SCameraActor::CalculateModel()
 
 void SCameraActor::Update(float DeltaTime)
 {
-	//ActorConfig.transform.Rotation.y += 0.0003;
+	ActorConfig.transform.Location += movementVector;
 }
 
 void SCameraActor::OnEvent(const Event& event)
@@ -38,27 +38,53 @@ void SCameraActor::OnEvent(const Event& event)
 	case EVENT_KEY_DOWN:
 		if (event.IsKey(GLFW_KEY_W))
 		{
-			ActorConfig.transform.Location.z += 0.1f;
+			movementVector.z = 0.001f;
 		}
 		else if (event.IsKey(GLFW_KEY_S))
 		{
-			ActorConfig.transform.Location.z -= 0.1f;
+			movementVector.z = -0.001f;
 		}
 		else if (event.IsKey(GLFW_KEY_D))
 		{
-			ActorConfig.transform.Location.x += 0.1f;
+			movementVector.x = -0.001f;
 		}
 		else if (event.IsKey(GLFW_KEY_A))
 		{
-			ActorConfig.transform.Location.x -= 0.1f;
+			movementVector.x = 0.001f;
 		}
 		else if (event.IsKey(GLFW_KEY_SPACE))
 		{
-			ActorConfig.transform.Location.y += 0.1f;
+			movementVector.y = 0.001f;
 		}
 		else if (event.IsKey(GLFW_KEY_LEFT_SHIFT))
 		{
-			ActorConfig.transform.Location.y -= 0.1f;
+			movementVector.y = -0.001f;
+		}
+		break;
+	case EVENT_KEY_UP:
+		if (event.IsKey(GLFW_KEY_W))
+		{
+			movementVector.z = 0;
+		}
+		else if (event.IsKey(GLFW_KEY_S))
+		{
+			movementVector.z = 0;
+		}
+		else if (event.IsKey(GLFW_KEY_D))
+		{
+			movementVector.x = 0;
+		}
+		else if (event.IsKey(GLFW_KEY_A))
+		{
+			movementVector.x = 0;
+		}
+		else if (event.IsKey(GLFW_KEY_SPACE))
+		{
+			movementVector.y = 0;
+		}
+		else if (event.IsKey(GLFW_KEY_LEFT_SHIFT))
+		{
+			movementVector.y = 0;
 		}
 		break;
 	default:

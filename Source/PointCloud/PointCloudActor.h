@@ -9,6 +9,7 @@ class SPointCloudActor : public SActor
 {
 public:
 	GENERATED_ACTOR_BODY(SPointCloudActor)
+	{}
 
 	SPointCloudAsset* PointCloud;
 

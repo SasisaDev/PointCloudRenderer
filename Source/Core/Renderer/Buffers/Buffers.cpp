@@ -12,7 +12,7 @@ UniformBuffer::UniformBuffer(void* data, size_t size, int binding)
 void UniformBuffer::UpdateBuffer(void* data, size_t offset, size_t size)
 {
 	glBindBuffer(GL_UNIFORM_BUFFER, bufferID);
-	glMapBufferRange(GL_UNIFORM_BUFFER, offset, size, GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_RANGE_BIT);
+	//glMapBufferRange(GL_UNIFORM_BUFFER, offset, size, GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_RANGE_BIT);
 	glBufferSubData(GL_UNIFORM_BUFFER, offset, size, data);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }

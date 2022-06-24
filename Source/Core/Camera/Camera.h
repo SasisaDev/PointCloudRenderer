@@ -14,9 +14,13 @@ class SCameraActor : public SActor
 {
 public:
 	GENERATED_ACTOR_BODY(SCameraActor)
+		, movementVector(0)
+	{
+	}
 public:
 	bool bTargetCamera = false;
 	glm::vec3 cameraTarget;
+	glm::vec3 movementVector;
 
 	float Width = 1280, Height = 720;
 public:
