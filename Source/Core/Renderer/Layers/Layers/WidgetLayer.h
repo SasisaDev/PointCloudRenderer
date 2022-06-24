@@ -2,12 +2,21 @@
 
 #include "../Layer.h"
 #include "../../../UI/Widget.h"
+#include "../../Buffers/Buffers.h"
 #include <GL/glew.h>
+
+struct WidgetUniformBuffer
+{
+	glm::mat4 Projection;
+};
 
 class WidgetLayer : public Layer
 {
 	std::vector<UWidget*> _widgets;
+	UniformBuffer* Uniform;
 public:
+	WidgetLayer();
+
 	void SetWidgets(const std::vector<UWidget*>& widgets) { _widgets = widgets; }
 
 	virtual void OnAttach();
