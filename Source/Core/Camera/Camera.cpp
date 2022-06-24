@@ -7,7 +7,7 @@ CameraModel SCameraActor::CalculateModel()
 {
 	CameraModel model;
 
-	model.Projection = glm::perspective(glm::radians(45.0f), Width / std::clamp(Height, std::numeric_limits<float>::epsilon(), 9169.0f), 0.1f, 100000.0f);
+	model.Projection = glm::perspective(glm::radians(60.0f), Width / std::clamp(Height, std::numeric_limits<float>::epsilon(), 9169.0f), 0.01f, 100000.0f);
 	//const float aspect = Width / Height;
 	//glm::ortho(-1.0f, 1.0f, -1.0f * aspect, 1.0f * aspect, 0.1f, 100.0f);
 
@@ -54,11 +54,11 @@ void SCameraActor::OnEvent(const Event& event)
 		}
 		else if (event.IsKey(GLFW_KEY_SPACE))
 		{
-			movementVector.y = 0.001f;
+			movementVector.y = -0.001f;
 		}
 		else if (event.IsKey(GLFW_KEY_LEFT_SHIFT))
 		{
-			movementVector.y = -0.001f;
+			movementVector.y = 0.001f;
 		}
 		break;
 	case EVENT_KEY_UP:
