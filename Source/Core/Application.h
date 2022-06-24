@@ -7,6 +7,8 @@ class Application
 protected:
 	std::vector<Engine*> engines;
 public:
+	float MaxFPS = 120;
+
 	Application();
 	Engine* CreateEngine(std::string Title, int width, int height);
 

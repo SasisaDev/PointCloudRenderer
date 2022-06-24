@@ -35,6 +35,7 @@ public:
 	SScene* GetScene() { return scene; }
 
 	void DispatchEvents(const Event& event);
+	EventDispatcher* GetEventDispatcher() { return &eventDispatcher; }
 
-	void EngineLoop();
+	void EngineLoop(float DeltaTime);
 };

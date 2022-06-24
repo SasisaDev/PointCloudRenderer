@@ -37,7 +37,7 @@ SDebugActor::SDebugActor(std::string name)
 
 void SDebugActor::Update(float dt)
 {
-	ActorConfig.transform.Rotation.y += 0.001;
+	ActorConfig.transform.Rotation.y += 0.005 * dt;
 
 	model = glm::translate(glm::mat4(1.0f), ActorConfig.transform.Location);
 	model = glm::rotate(model, ActorConfig.transform.Rotation.x, glm::vec3(1, 0, 0));

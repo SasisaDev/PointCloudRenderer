@@ -19,17 +19,26 @@ Engine* Application::CreateEngine(std::string Title, int width, int height)
 
 void Application::Loop()
 {
+	clock_t begin_time = clock();
+	float dt = 0;
 	while (!glfwWindowShouldClose(engines[0]->GetWindow()->GetHandle()))
 	{
-		for (auto engine : engines)
+		clock_t elapsed_time = clock();
+		dt = elapsed_time - begin_time;
+		if (dt >= 1000 / MaxFPS)
 		{
-			if (glfwWindowShouldClose(engine->GetWindow()->GetHandle()))
+			begin_time = elapsed_time;
+
+			for (auto engine : engines)
 			{
-				// Remove engine
-			}
-			else
-			{
-				engine->EngineLoop();
+				if (glfwWindowShouldClose(engine->GetWindow()->GetHandle()))
+				{
+					// Remove engine
+				}
+				else
+				{
+					engine->EngineLoop(dt);
+				}
 			}
 		}
 	}

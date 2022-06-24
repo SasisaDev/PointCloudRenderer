@@ -96,7 +96,7 @@ void Engine::DispatchEvents(const Event& event)
 	}
 }
 
-void Engine::EngineLoop()
+void Engine::EngineLoop(float DeltaTime)
 {
 	glfwMakeContextCurrent(window->GetHandle());
 
@@ -110,12 +110,12 @@ void Engine::EngineLoop()
 
 	if (scene)
 	{
-		scene->Update(1);
+		scene->Update(DeltaTime);
 	}
 	
 	for (UWidget* widget : widgets)
 	{
-		widget->Update(1);
+		widget->Update(DeltaTime);
 	}
 
 	layerStack->RenderAll();

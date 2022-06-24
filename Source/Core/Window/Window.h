@@ -12,6 +12,18 @@
 #include "../Debug/Logger.h"
 #include "../Events/EventDispatcher.h"
 
+enum InputMode
+{
+	// Hides and locks cursor, click events go into UI first, and only then to scene
+	INPUT_CONSUME,
+	// Forces UI Layer to consume events and ignore game
+	INPUT_UI_CONSUME,
+	// Forces game to consume events and ignore UI
+	INPUT_GAME_CONSUME,
+	// Cursor is visible and not locked, events go into UI first, and only then to scene
+	INPUT_DEFAULT
+};
+
 class Window
 {
 protected:
@@ -30,6 +42,8 @@ public:
 
 	void AttachEventDispatcher(EventDispatcher* dispatcher) { eventDispatcher = dispatcher; }
 	EventDispatcher* GetEventDispatcher() { return eventDispatcher; }
+
+	void SetInputMode(InputMode mode);
 
 	std::string GetTitle() { return Title; }
 
