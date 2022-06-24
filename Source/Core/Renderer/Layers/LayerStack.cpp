@@ -61,38 +61,14 @@ void LayerStack::AddLayer(Layer* layer, int index)
 
 void LayerStack::RenderAll()
 {
-	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-
 	glClearColor(0.075, 0.075, 0.075, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for (auto layer : layers)
 	{
 		layer->OnUpdate();
-		layer->Render(framebuffer);
+		layer->Render();
 	}
-
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_fbo_vertices);
-	glUseProgram(LayerStackShader->GetProgramID());
-	glActiveTexture(GL_TEXTURE0 + 0);
-	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
-	glUniform1i(glGetUniformLocation(LayerStackShader->GetProgramID(), "fbo_texture\0"), 0);
-	glEnableVertexAttribArray(glGetAttribLocation(LayerStackShader->GetProgramID(), "v_coord"));
-	glVertexAttribPointer(
-		glGetAttribLocation(LayerStackShader->GetProgramID(), "v_coord"),  // attribute
-		2,                  // number of elements per vertex, here (x,y)
-		GL_FLOAT,           // the type of each element
-		GL_FALSE,           // take our values as-is
-		0,                  // no extra data between each position
-		0                   // offset of first element
-	);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glUseProgram(0);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	glDisableVertexAttribArray(glGetAttribLocation(LayerStackShader->GetProgramID(), "v_coord"));
 }
 
 void LayerStack::DispatchAll(const Event& e)

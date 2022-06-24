@@ -9,7 +9,7 @@ struct Transform
 	glm::vec3 Rotation;
 	glm::vec3 Scale;
 
-	Transform(){}
+	Transform() : Location(0), Rotation(0), Scale(1){}
 };
 
 struct Transform2D

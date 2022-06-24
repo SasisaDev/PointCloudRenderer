@@ -27,6 +27,6 @@ public:
 	virtual void OnAttach();
 	virtual void OnDetach();
 	virtual void OnUpdate();
-	virtual void Render(unsigned int framebuffer);
+	virtual void Render();
 	virtual void OnEvent(const Event& e);
 };

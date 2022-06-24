@@ -30,9 +30,8 @@ void SceneLayer::OnUpdate()
 	}
 }
 
-void SceneLayer::Render(unsigned int framebuffer)
+void SceneLayer::Render()
 {
-	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
 	glEnable(GL_DEPTH_TEST);
 
 	for (SActor* actor : _scene->GetActors())
@@ -41,7 +40,6 @@ void SceneLayer::Render(unsigned int framebuffer)
 	}
 
 	glDisable(GL_DEPTH_TEST);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 void SceneLayer::OnEvent(const Event& e)
