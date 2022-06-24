@@ -10,6 +10,9 @@
 #define EVENT_CURSOR_POSITION 5
 #define EVENT_WINDOW_RESIZE 6
 #define EVENT_QUIT 7
+#define EVENT_KEY 8
+#define EVENT_MOUSEBUTTON 9
+#define EVENT_SCROLL 10
 
 class Event
 {
@@ -19,5 +22,5 @@ public:
 
 	Event(unsigned int Action, std::vector<void*> Params);
 
-	bool IsKey(int key);
+	bool IsKey(int key) const;
 };

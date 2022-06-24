@@ -24,6 +24,26 @@ Window::Window(std::string title, int w, int h)
 			}
 		});
 
+	glfwSetKeyCallback(Handle, [](GLFWwindow* win, int key, int scancode, int action, int mods)
+		{
+			Window* window = reinterpret_cast<Window*>(glfwGetWindowUserPointer(win));
+			if (window)
+			{
+				if (auto dispatcher = window->GetEventDispatcher())
+				{
+					if (action == GLFW_PRESS)
+					{
+						dispatcher->Dispatch(Event(EVENT_KEY_DOWN, std::vector<void*>{reinterpret_cast<void*>(key)}));
+					}
+					else if (action == GLFW_RELEASE)
+					{
+						dispatcher->Dispatch(Event(EVENT_KEY_UP, std::vector<void*>{reinterpret_cast<void*>(key)}));
+					}
+					dispatcher->Dispatch(Event(EVENT_KEY, std::vector<void*>{reinterpret_cast<void*>(key)}));
+				}
+			}
+		});
+
 	glfwMakeContextCurrent(Handle);
 
 	if (glewInit() != GLEW_OK)
