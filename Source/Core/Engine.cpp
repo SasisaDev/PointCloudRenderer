@@ -98,6 +98,7 @@ void Engine::DispatchEvents(const Event& event)
 
 void Engine::EngineLoop(float DeltaTime)
 {
+	GEngine = this;
 	glfwMakeContextCurrent(window->GetHandle());
 
 	glClearColor(0, 0, 0, 1);

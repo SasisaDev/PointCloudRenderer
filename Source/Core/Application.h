@@ -14,3 +14,5 @@ public:
 
 	void Loop();
 };
+
+Application* GApplication = nullptr;

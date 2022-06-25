@@ -20,8 +20,20 @@ int main(int argc, char* argv[])
 	SPointCloudActor* PointCloud = MainScene->SpawnActor<SPointCloudActor>(ActorCreateInfo("PointCloudActor"));
 	SDebugActor* DbgActor = MainScene->SpawnActor<SDebugActor>(ActorCreateInfo("DebugActor"));
 	{
-		DbgActor->ActorConfig.transform.Location.z = -2;
+		DbgActor->ActorConfig.transform.Location.z = -4;
 		DbgActor->ActorConfig.transform.Scale = glm::vec3(1);
+	}
+	SDebugActor* DbgActor2 = MainScene->SpawnActor<SDebugActor>(ActorCreateInfo("DebugActor2"));
+	{
+		DbgActor2->ActorConfig.transform.Location.z = -8;
+		DbgActor2->ActorConfig.transform.Location.x = 4;
+		DbgActor2->ActorConfig.transform.Scale = glm::vec3(2);
+	}
+	SDebugActor* DbgActor3 = MainScene->SpawnActor<SDebugActor>(ActorCreateInfo("DebugActor3"));
+	{
+		DbgActor3->ActorConfig.transform.Location.z = -4;
+		DbgActor3->ActorConfig.transform.Location.x = -7;
+		DbgActor3->ActorConfig.transform.Scale = glm::vec3(0.25);
 	}
 	SCameraActor* Camera = MainScene->SpawnActor<SCameraActor>(ActorCreateInfo("Camera"));
 

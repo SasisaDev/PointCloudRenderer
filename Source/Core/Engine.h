@@ -39,3 +39,5 @@ public:
 
 	void EngineLoop(float DeltaTime);
 };
+
+Engine* GEngine = nullptr;

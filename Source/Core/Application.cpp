@@ -2,6 +2,11 @@
 
 Application::Application()
 {
+	if (GApplication == nullptr)
+	{
+		GApplication = this;
+	}
+
 	if (!glfwInit())
 	{
 		throw std::exception("GLFW initialization failed");
