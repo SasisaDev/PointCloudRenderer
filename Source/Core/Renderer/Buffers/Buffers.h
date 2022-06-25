@@ -2,15 +2,38 @@
 
 #include <GL/glew.h>
 #include <cstddef>
+#include <vector>
 
 class VertexBuffer
 {
+protected:
+	unsigned int bufferID;
+	std::vector<float> vertices;
+public:
+	VertexBuffer();
+	VertexBuffer(std::vector<float> data);
 
+	~VertexBuffer();
+
+	void SetData(std::vector<float> data);
+
+	unsigned int GetID() const { return bufferID; }
 };
 
 class IndexBuffer
 {
+protected:
+	unsigned int bufferID;
+	std::vector<int> indices;
+public:
+	IndexBuffer();
+	IndexBuffer(std::vector<int> data);
 
+	~IndexBuffer();
+
+	void SetData(std::vector<int> data);
+
+	unsigned int GetID() const { return bufferID; }
 };
 
 class UniformBuffer

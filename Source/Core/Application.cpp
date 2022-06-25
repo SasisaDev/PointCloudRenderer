@@ -1,5 +1,7 @@
 #include "Application.h"
 
+Application* Application::GApplication = nullptr;
+
 Application::Application()
 {
 	if (GApplication == nullptr)

@@ -161,6 +161,7 @@
     <ClCompile Include="Source\Core\Renderer\Layers\LayerStack.cpp" />
     <ClCompile Include="Source\Core\Renderer\Layers\Layers\SceneLayer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Layers\Layers\WidgetLayer.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Mesh\Mesh.cpp" />
     <ClCompile Include="Source\Core\Renderer\Renderer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Renderers\OpenGLRenderer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Shader\Shader.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="Source\Core\Window\Window.cpp" />
     <ClCompile Include="Source\PointCloud\PointCloudActor.cpp" />
     <ClCompile Include="Source\PointCloud\PointCloudAsset.cpp" />
+    <ClCompile Include="Source\PointCloud\UI\MenubarWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Application.h" />
@@ -191,6 +193,7 @@
     <ClInclude Include="Source\Core\Renderer\Layers\LayerStack.h" />
     <ClInclude Include="Source\Core\Renderer\Layers\Layers\SceneLayer.h" />
     <ClInclude Include="Source\Core\Renderer\Layers\Layers\WidgetLayer.h" />
+    <ClInclude Include="Source\Core\Renderer\Mesh\Mesh.h" />
     <ClInclude Include="Source\Core\Renderer\Renderer.h" />
     <ClInclude Include="Source\Core\Renderer\Renderers\OpenGLRenderer.h" />
     <ClInclude Include="Source\Core\Renderer\Shader\Shader.h" />
@@ -202,6 +205,7 @@
     <ClInclude Include="Source\Core\Window\Window.h" />
     <ClInclude Include="Source\PointCloud\PointCloudActor.h" />
     <ClInclude Include="Source\PointCloud\PointCloudAsset.h" />
+    <ClInclude Include="Source\PointCloud\UI\MenubarWidget.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\Debug\Debug.frag" />

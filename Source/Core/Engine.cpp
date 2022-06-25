@@ -1,5 +1,7 @@
 #include "Engine.h"
 
+Engine* Engine::GEngine = nullptr;
+
 Engine::Engine(std::string Title, int width, int height, uint8_t layers)
 {
 	window = new Window(Title, width, height);
@@ -80,19 +82,35 @@ void Engine::RemoveWindow(Window* window)
 
 void Engine::DispatchEvents(const Event& event)
 {
-	if (scene)
+	InputMode mode = window->GetInputMode();
+
+	bool Handled = false;
+
+	if (mode != InputMode::INPUT_GAME_CONSUME)
 	{
-		scene->DispatchEvent(event);
+		for (auto widget : widgets)
+		{
+			if (widget->OnEvent(event) == true)
+			{
+				Handled = true;
+			}
+		}
+	}
+
+	if (mode != InputMode::INPUT_UI_CONSUME)
+	{
+		if (!Handled)
+		{
+			if (scene)
+			{
+				scene->DispatchEvent(event);
+			}
+		}
 	}
 
 	if (layerStack)
 	{
 		layerStack->DispatchAll(event);
-	}
-
-	for (auto widget : widgets)
-	{
-		widget->OnEvent(event);
 	}
 }
 

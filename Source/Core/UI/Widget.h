@@ -11,7 +11,7 @@
 #define WIDGETSPACE_X 1920
 #define WIDGETSPACE_Y 1080
 
-#define GENERATED_WIDGET_BODY(className, Parent) className(std::string name, const WidgetCreateInfo& info) : Parent(name, info)
+#define GENERATED_WIDGET_BODY(className, Parent, ...) className(std::string name, const WidgetCreateInfo& info, __VA_ARGS__) : Parent(name, info)
 
 enum WidgetAlign : uint8_t
 {
@@ -23,10 +23,8 @@ enum WidgetAlign : uint8_t
 
 enum WidgetStretch : uint8_t
 {
-	STRETCH_TOP = 0x0,
-	STRETCH_BOTTOM = 0x1,
-	STRETCH_LEFT = 0x2,
-	STRETCH_RIGHT = 0x4
+	STRETCH_VERTICAL = 0x0,
+	STRETCH_HORIZONTAL = 0x1,
 };
 
 typedef struct
@@ -58,7 +56,7 @@ public:
 	virtual void Update(float DeltaTime);
 
 	virtual void OnPaint();
-	virtual void OnEvent(const Event& event) {}
+	virtual bool OnEvent(const Event& event) { return false; }
 };
 
 template <typename _T>

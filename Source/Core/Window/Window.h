@@ -12,7 +12,7 @@
 #include "../Debug/Logger.h"
 #include "../Events/EventDispatcher.h"
 
-enum InputMode
+enum class InputMode : uint8_t
 {
 	// Hides and locks cursor, click events go into UI first, and only then to scene
 	INPUT_CONSUME,
@@ -34,6 +34,8 @@ protected:
 
 	std::string Title;
 	int Width = 0, Height = 0;
+
+	InputMode inputMode;
 public:
 	Window(std::string title, int w, int h);
 
@@ -43,7 +45,8 @@ public:
 	void AttachEventDispatcher(EventDispatcher* dispatcher) { eventDispatcher = dispatcher; }
 	EventDispatcher* GetEventDispatcher() { return eventDispatcher; }
 
-	void SetInputMode(InputMode mode);
+	void SetInputMode(InputMode mode) { inputMode = mode; }
+	InputMode GetInputMode() const { return inputMode; }
 
 	std::string GetTitle() { return Title; }
 

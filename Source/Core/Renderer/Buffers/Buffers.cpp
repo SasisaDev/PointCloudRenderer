@@ -16,3 +16,57 @@ void UniformBuffer::UpdateBuffer(void* data, size_t offset, size_t size)
 	glBufferSubData(GL_UNIFORM_BUFFER, offset, size, data);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
+
+VertexBuffer::VertexBuffer()
+{
+	glGenBuffers(1, &bufferID);
+}
+
+VertexBuffer::VertexBuffer(std::vector<float> data)
+{
+	glGenBuffers(1, &bufferID);
+	SetData(data);
+}
+
+VertexBuffer::~VertexBuffer()
+{
+	if (bufferID > 0)
+	{
+		glDeleteBuffers(1, &bufferID);
+	}
+}
+
+void VertexBuffer::SetData(std::vector<float> data)
+{
+	vertices = data;
+	glBindBuffer(GL_ARRAY_BUFFER, bufferID);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * vertices.size(), vertices.data(), GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+IndexBuffer::IndexBuffer()
+{
+	glGenBuffers(1, &bufferID);
+}
+
+IndexBuffer::IndexBuffer(std::vector<int> data)
+{
+	glGenBuffers(1, &bufferID);
+	SetData(data);
+}
+
+IndexBuffer::~IndexBuffer()
+{
+	if (bufferID > 0)
+	{
+		glDeleteBuffers(1, &bufferID);
+	}
+}
+
+void IndexBuffer::SetData(std::vector<int> data)
+{
+	indices = data;
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufferID);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * indices.size(), indices.data(), GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+}

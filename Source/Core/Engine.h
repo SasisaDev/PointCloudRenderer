@@ -26,6 +26,8 @@ protected:
 	std::vector<UWidget*> widgets;
 	EventDispatcher eventDispatcher;
 public:
+	static Engine* GEngine;
+
 	Engine(std::string Title, int width, int height, uint8_t layers = LAYER_SCENE | LAYER_WIDGET);
 
 	void SetWindow(Window* window);
@@ -39,5 +41,3 @@ public:
 
 	void EngineLoop(float DeltaTime);
 };
-
-Engine* GEngine = nullptr;
