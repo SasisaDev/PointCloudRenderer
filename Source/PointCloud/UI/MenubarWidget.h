@@ -7,9 +7,7 @@ class UMenubarWidget : public UWidget
 public:
 	GENERATED_WIDGET_BODY(UMenubarWidget, UWidget)
 	{
-
-
-		mesh = new Mesh();
+		//mesh = new Mesh();
 	}
 
 	Mesh* mesh;

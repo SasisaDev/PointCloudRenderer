@@ -6,6 +6,11 @@ STexture2D::STexture2D(std::string name, std::string texturePath)
 {
 }
 
+STexture2D::~STexture2D()
+{
+	delete texture;
+}
+
 Texture2D::Texture2D(int w, int h, int mode)
 {
 }

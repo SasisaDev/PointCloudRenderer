@@ -143,7 +143,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Core\UI\Brush.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Source\Core\UI\Widgets\Panel.cpp" />
     <ClCompile Include="Source\Core\Application.cpp" />
     <ClCompile Include="Source\Core\Camera\Camera.cpp" />
     <ClCompile Include="Source\Core\Camera\CameraSubsystem.cpp" />
@@ -175,6 +177,8 @@
     <ClCompile Include="Source\PointCloud\UI\MenubarWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Core\Types\Color.h" />
+    <ClInclude Include="Source\Core\UI\Brush.h" />
     <ClInclude Include="Source\Core\Application.h" />
     <ClInclude Include="Source\Core\Camera\Camera.h" />
     <ClInclude Include="Source\Core\Camera\CameraSubsystem.h" />
@@ -202,6 +206,7 @@
     <ClInclude Include="Source\Core\Scene\Scene.h" />
     <ClInclude Include="Source\Core\Types\Transform.h" />
     <ClInclude Include="Source\Core\UI\Widget.h" />
+    <ClInclude Include="Source\Core\UI\Widgets\Panel.h" />
     <ClInclude Include="Source\Core\Window\Window.h" />
     <ClInclude Include="Source\PointCloud\PointCloudActor.h" />
     <ClInclude Include="Source\PointCloud\PointCloudAsset.h" />
