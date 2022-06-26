@@ -106,3 +106,16 @@ void UWidget::Update(float DeltaTime)
 void UWidget::OnPaint()
 {
 }
+
+void UWidget::DrawBrush(Mesh* mesh, SBrush* brush)
+{
+	mesh->Bind();
+
+	brush->Bind(0);
+
+	glDrawElements(GL_TRIANGLES, mesh->meshData.vertices.size() / 3, GL_FLOAT, nullptr);
+
+	brush->Unbind();
+
+	mesh->Unbind();
+}

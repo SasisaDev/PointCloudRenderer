@@ -44,6 +44,16 @@ void VertexBuffer::SetData(std::vector<float> data)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+void VertexBuffer::Bind()
+{
+	glBindBuffer(GL_ARRAY_BUFFER, bufferID);
+}
+
+void VertexBuffer::Unbind()
+{
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
 IndexBuffer::IndexBuffer()
 {
 	glGenBuffers(1, &bufferID);
@@ -68,5 +78,15 @@ void IndexBuffer::SetData(std::vector<int> data)
 	indices = data;
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufferID);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * indices.size(), indices.data(), GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+}
+
+void IndexBuffer::Bind()
+{
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufferID);
+}
+
+void IndexBuffer::Unbind()
+{
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }

@@ -12,12 +12,12 @@ struct WidgetUniformBuffer
 
 class WidgetLayer : public Layer
 {
-	std::vector<UWidget*> _widgets;
+	std::vector<UWidget*>* _widgets;
 	UniformBuffer* Uniform;
 public:
 	WidgetLayer();
 
-	void SetWidgets(const std::vector<UWidget*>& widgets) { _widgets = widgets; }
+	void SetWidgets(std::vector<UWidget*>* widgets) { _widgets = widgets; }
 
 	virtual void OnAttach();
 	virtual void OnDetach();

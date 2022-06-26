@@ -16,6 +16,7 @@ Engine::Engine(std::string Title, int width, int height, uint8_t layers)
 	if ((layers & LAYER_WIDGET) == LAYER_WIDGET)
 	{
 		layerStack->AddLayer(new WidgetLayer());
+		layerStack->GetLayer<WidgetLayer>()->SetWidgets(&widgets);
 	}
 
 	eventDispatcher.Subscribe([this](const Event& event) {
@@ -111,6 +112,15 @@ void Engine::DispatchEvents(const Event& event)
 	if (layerStack)
 	{
 		layerStack->DispatchAll(event);
+	}
+}
+
+void Engine::AddWidget(UWidget* widget)
+{
+	if (widget)
+	{
+		widgets.push_back(widget);
+		Logger::Log("Widget added to viewport: " + widget->ObjectName);
 	}
 }
 

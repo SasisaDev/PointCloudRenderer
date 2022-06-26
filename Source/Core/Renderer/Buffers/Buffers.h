@@ -17,6 +17,9 @@ public:
 
 	void SetData(std::vector<float> data);
 
+	void Bind();
+	void Unbind();
+
 	unsigned int GetID() const { return bufferID; }
 };
 
@@ -32,6 +35,9 @@ public:
 	~IndexBuffer();
 
 	void SetData(std::vector<int> data);
+
+	void Bind();
+	void Unbind();
 
 	unsigned int GetID() const { return bufferID; }
 };

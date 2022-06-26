@@ -6,8 +6,13 @@ layout (binding = 1) uniform WidgetUniformBuffer
 };
 
 layout (location = 0) in vec3 Position;
+layout (location = 1) in vec2 UV;
+
+out vec2 fragUV;
 
 void main()
 {
-    gl_Position = Projection * View * Model * vec4(Position, 1);
+    fragUV = UV;
+
+    gl_Position = Projection * vec4(Position, 1);
 }

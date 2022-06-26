@@ -31,7 +31,7 @@ void WidgetLayer::Render()
 {
 	glDisable(GL_DEPTH_TEST);
 
-	for (UWidget* widget : _widgets)
+	for (UWidget* widget : *_widgets)
 	{
 		widget->Render();
 	}

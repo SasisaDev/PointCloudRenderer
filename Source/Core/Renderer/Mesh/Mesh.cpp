@@ -16,7 +16,7 @@ Mesh::Mesh(const MeshData& data)
 
 	vertices = new VertexBuffer(data.vertices);
 	indices = new IndexBuffer(data.indices);
-	UVs = data.UVs;
+	//UVs = data.UVs;
 }
 
 void Mesh::SetData(std::vector<float> v, std::vector<int> i, std::vector<glm::vec2> uvs)
@@ -50,8 +50,12 @@ void Mesh::RebuildMesh()
 
 void Mesh::Bind()
 {
+	vertices->Bind();
+	indices->Bind();
 }
 
 void Mesh::Unbind()
 {
+	vertices->Unbind();
+	indices->Unbind();
 }

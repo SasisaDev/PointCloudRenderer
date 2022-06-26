@@ -5,6 +5,8 @@
 #include "../Types/Transform.h"
 #include "../Window/Window.h"
 #include "../Events/Event.h"
+#include "../Renderer/Mesh/Mesh.h"
+#include "Brush.h"
 
 #include <vector>
 
@@ -57,6 +59,8 @@ public:
 
 	virtual void OnPaint();
 	virtual bool OnEvent(const Event& event) { return false; }
+
+	void DrawBrush(Mesh* mesh, SBrush* brush);
 };
 
 template <typename _T>
@@ -65,3 +69,5 @@ _T* CreateWidget(std::string name, const WidgetCreateInfo& info)
 	_T* Widget = new _T(name, info);
 	return Widget;
 }
+
+#define CreateWidget(_class, name, info, ...) new _class (name, info, __VA_ARGS__)

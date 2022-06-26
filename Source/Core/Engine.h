@@ -39,5 +39,7 @@ public:
 	void DispatchEvents(const Event& event);
 	EventDispatcher* GetEventDispatcher() { return &eventDispatcher; }
 
+	void AddWidget(UWidget* widget);
+
 	void EngineLoop(float DeltaTime);
 };
