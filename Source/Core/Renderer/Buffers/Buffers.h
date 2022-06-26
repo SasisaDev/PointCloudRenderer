@@ -51,3 +51,16 @@ public:
 
 	void UpdateBuffer(void* data, size_t offset, size_t size);
 };
+
+class ShaderStorageBuffer
+{
+protected:
+	unsigned int bufferID;
+public:
+	ShaderStorageBuffer(void* data, size_t size, int binding);
+
+	void Bind() { glBindBuffer(GL_SHADER_STORAGE_BUFFER, bufferID); }
+	void Unbind() { glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0); }
+
+	void UpdateBuffer(void* data, size_t size);
+};

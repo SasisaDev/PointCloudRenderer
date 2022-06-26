@@ -14,18 +14,38 @@ protected:
 	SMaterial* material;
 	STexture2D* texture;
 
+	unsigned int VAO;
+
 	VertexBuffer* vertices;
 	IndexBuffer* indices;
 
-	unsigned int instances;
+	unsigned int instances = 0;
 
-	VertexBuffer* models;
-	VertexBuffer* colors;
+	ShaderStorageBuffer* ssbo;
+
+	struct
+	{
+		std::vector < glm::vec3 > positions;
+		std::vector < glm::vec4 > colors;
+	} PointCloudSSBO;
+
+	struct BytedPointCloudSSBO
+	{
+		glm::vec3* positions;
+		glm::vec4* colors;
+	};
 public:
 	GENERATED_ACTOR_BODY(SPointCloudActor)
 	{
 		material = new SMaterial("PointCloudMaterial", "Shaders/PointCloud/Point");
 		texture = new STexture2D("PointTexture", "Textures/PointCloud/Point");
+
+		vertices = new VertexBuffer();
+		indices = new IndexBuffer();
+
+		ssbo = new ShaderStorageBuffer(0, 0, 3);
+
+		//glGenVertexArrays(1, &VAO);
 	}
 	
 	void RebuildMesh();

@@ -46,6 +46,7 @@ Window::Window(std::string title, int w, int h)
 
 	glfwMakeContextCurrent(Handle);
 
+	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
 	{
 		Logger::Log("Glew initialization failed");

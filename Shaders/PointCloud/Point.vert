@@ -1,5 +1,5 @@
 #version 330
-#define MAX_POINTS 2^32
+#define MAX_POINTS 2^32-1
 
 layout (binding = 0) uniform SceneUniformBuffer
 {
@@ -9,15 +9,19 @@ layout (binding = 0) uniform SceneUniformBuffer
 
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec2 UV;
-uniform mat4 Model[MAX_POINTS];
-uniform vec4 Color[MAX_POINTS];
+
+layout(std430, binding = 3) buffer PointCloudSSBO
+{
+    vec3 Positions[];
+	vec4 Colors[];
+};
 
 out vec4 fragColor;
-in vec2 uv;
+out vec2 uv;
 
 void main()
 {
 	uv = UV;
-	fragColor = Color[gl_InstanceID];
-    gl_Position = Projection * View * Model * vec4(aPos, 1);
+	fragColor = Colors[gl_InstanceID];
+    gl_Position = Projection * View * vec4(aPos + Positions[gl_InstanceID], 1);
 }

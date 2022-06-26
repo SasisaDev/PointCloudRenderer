@@ -10,5 +10,5 @@ void main()
     vec4 circle = texture(tex, uv);
     if(circle.a < 0.1)
         discard;
-    gl_FragColor = circle;
+    gl_FragColor = vec4(1, 1, 1, 1);
 }

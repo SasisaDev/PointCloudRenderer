@@ -18,4 +18,7 @@ protected:
 
 public:
 	GENERATED_BODY(SPointCloudAsset)
+public:
+
+	std::vector<CloudPoint> GetPoints() const { return Points; }
 };
