@@ -7,7 +7,14 @@ class UPanel : public UWidget
 public:
 	GENERATED_WIDGET_BODY(UPanel, UWidget)
 	{
-		mesh = new Mesh(Mesh::Plane(0, 0, 100, 100));
+		mesh = new Mesh(Mesh::Plane());
+
+		WidgetDetails.transform.x = 0;
+		WidgetDetails.transform.y = 1;
+		WidgetDetails.transform.cx = 350;
+		WidgetDetails.transform.cy = 100;
+
+		WidgetDetails.alignment.align = ALIGN_LEFT | ALIGN_TOP;
 		
 		brush = NewObject(
 			SBrush, 

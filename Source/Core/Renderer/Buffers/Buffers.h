@@ -50,16 +50,18 @@ public:
 	UniformBuffer(void* data, size_t size, int binding);
 
 	void UpdateBuffer(void* data, size_t offset, size_t size);
+	
+	void Bind() { glBindBuffer(GL_UNIFORM_BUFFER, bufferID); }
 };
 
 class ShaderStorageBuffer
 {
 protected:
-	unsigned int bufferID;
+	unsigned int bufferID, Binding;
 public:
 	ShaderStorageBuffer(void* data, size_t size, int binding);
 
-	void Bind() { glBindBuffer(GL_SHADER_STORAGE_BUFFER, bufferID); }
+	void Bind() { glBindBuffer(GL_SHADER_STORAGE_BUFFER, bufferID); glBindBufferBase(GL_SHADER_STORAGE_BUFFER, Binding, bufferID);}
 	void Unbind() { glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0); }
 
 	void UpdateBuffer(void* data, size_t size);

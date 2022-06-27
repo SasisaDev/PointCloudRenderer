@@ -43,9 +43,18 @@ public:
 		vertices = new VertexBuffer();
 		indices = new IndexBuffer();
 
-		//ssbo = new ShaderStorageBuffer(0, 0, 3);
+		ssbo = new ShaderStorageBuffer(0, 0, 3);
 
-		//glGenVertexArrays(1, &VAO);
+		vertices->SetData(std::vector<float> {
+			-0.5, 0.5, 0, //0, 0,
+				0.5, 0.5, 0, //1, 0,
+				-0.5, -0.5, 0, //0, 1,
+				0.5, -0.5, 0, //1, 1,
+		});
+
+		indices->SetData(std::vector<int> {
+			0, 1, 2, 3, 2, 1
+		});
 	}
 	
 	void RebuildMesh();

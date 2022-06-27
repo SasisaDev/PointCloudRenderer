@@ -92,6 +92,7 @@ void IndexBuffer::Unbind()
 }
 
 ShaderStorageBuffer::ShaderStorageBuffer(void* data, size_t size, int binding)
+	: Binding(binding)
 {
 	glGenBuffers(1, &bufferID);
 	glBindBuffer(GL_SHADER_STORAGE_BUFFER, bufferID);

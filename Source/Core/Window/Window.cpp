@@ -44,6 +44,27 @@ Window::Window(std::string title, int w, int h)
 			}
 		});
 
+	glfwSetMouseButtonCallback(Handle, [](GLFWwindow* win, int button, int action, int mods)
+		{
+			Window* window = reinterpret_cast<Window*>(glfwGetWindowUserPointer(win));
+			if (window)
+			{
+				if (auto dispatcher = window->GetEventDispatcher())
+				{
+					double xpos, ypos;
+					glfwGetCursorPos(win, &xpos, &ypos);
+					if (action == GLFW_PRESS)
+					{
+						dispatcher->Dispatch(Event(EVENT_MOUSEBUTTON_DOWN, std::vector<void*>{reinterpret_cast<void*>((int)xpos), reinterpret_cast<void*>((int)ypos)}));
+					}
+					else if (action == GLFW_RELEASE)
+					{
+						dispatcher->Dispatch(Event(EVENT_MOUSEBUTTON_UP, std::vector<void*>{reinterpret_cast<void*>((int)xpos), reinterpret_cast<void*>((int)ypos)}));
+					}
+				}
+			}
+		});
+
 	glfwMakeContextCurrent(Handle);
 
 	glewExperimental = GL_TRUE;

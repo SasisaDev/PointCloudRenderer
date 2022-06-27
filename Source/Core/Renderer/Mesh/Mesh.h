@@ -29,19 +29,19 @@ public:
 	void Bind();
 	void Unbind();
 
-	static MeshData Plane(float x, float y, float w, float h)
+	static MeshData Plane()
 	{
 		MeshData data;
 
 		data.vertices = {
-			x, x+h, 0,
-			x+w, x+h, 0,
-			x, x, 0,
-			x+w, x, 0
+			0, 1, 0,
+			1, 1, 0,
+			0, 0, 0,
+			1, 0, 0
 		};
 
 		data.indices = {
-			1, 2, 3, 2, 3, 4
+			0, 1, 2, 3, 2, 1
 		};
 
 		data.UVs = {

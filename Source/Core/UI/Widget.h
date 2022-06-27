@@ -17,16 +17,16 @@
 
 enum WidgetAlign : uint8_t
 {
-	ALIGN_TOP		= 0x0,
-	ALIGN_BOTTOM	= 0x1,
-	ALIGN_LEFT		= 0x2,
-	ALIGN_RIGHT		= 0x4
+	ALIGN_TOP		= 0x1,
+	ALIGN_BOTTOM	= 0x2,
+	ALIGN_LEFT		= 0x4,
+	ALIGN_RIGHT		= 0x8
 };
 
 enum WidgetStretch : uint8_t
 {
-	STRETCH_VERTICAL = 0x0,
-	STRETCH_HORIZONTAL = 0x1,
+	STRETCH_VERTICAL = 0x1,
+	STRETCH_HORIZONTAL = 0x2,
 };
 
 typedef struct
@@ -34,14 +34,16 @@ typedef struct
 	Transform2D transform;
 
 	struct {
-		WidgetAlign align;
-		WidgetStretch stretch;
+		int align;
+		int stretch;
 	} alignment;
 
 } WidgetInfo, WidgetCreateInfo;
 
 class UWidget : public SObject
 {
+protected:
+	glm::mat4 Model;
 public:
 	UWidget(std::string name, const WidgetCreateInfo& info) : SObject(name), WidgetDetails(info) {}
 public:
@@ -58,7 +60,10 @@ public:
 	virtual void Update(float DeltaTime);
 
 	virtual void OnPaint();
-	virtual bool OnEvent(const Event& event) { return false; }
+	virtual bool OnEvent(const Event& event);
+
+	virtual void OnButtonDown() {}
+	virtual void OnButtonUp() {}
 
 	void DrawBrush(Mesh* mesh, SBrush* brush);
 };

@@ -34,6 +34,8 @@ void SceneLayer::Render()
 {
 	glEnable(GL_DEPTH_TEST);
 
+	Uniform->Bind();
+
 	for (SActor* actor : _scene->GetActors())
 	{
 		actor->Render();

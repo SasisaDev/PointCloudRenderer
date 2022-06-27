@@ -17,17 +17,6 @@ void SPointCloudActor::RebuildMesh()
 		ssbo->UpdateBuffer(&bpc, (sizeof(glm::vec3) + sizeof(glm::vec4) * instances));
 	}*/
 
-	vertices->SetData(std::vector<float> {
-		-0.5,  0.5, 0, //0, 0,
-		 0.5,  0.5, 0, //1, 0,
-		-0.5, -0.5, 0, //0, 1,
-		 0.5, -0.5, 0, //1, 1,
-	});
-
-	indices->SetData(std::vector<int> {
-		0, 1, 2, 3, 2, 1
-	});
-
 	instances = 2;
 
 	PointCloudSSBO.colors = { glm::vec4(1.0f, 0.0f, 1.0f, 1.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f) };
@@ -47,8 +36,8 @@ void SPointCloudActor::RebuildMesh()
 
 	size_t sizeglm = sizeof(glm::vec4);
 	size_t size = sizeof(BytedPointCloudSSBO) * instances;
-	ssbo = new ShaderStorageBuffer(bpc, size, 3);
-	//ssbo->UpdateBuffer(bpc, size);
+	//ssbo = new ShaderStorageBuffer(bpc, size, 3);
+	ssbo->UpdateBuffer(bpc, size);
 }
 
 int SPointCloudActor::Render()
@@ -77,15 +66,6 @@ int SPointCloudActor::Render()
 
 		glDisableVertexAttribArray(0);
 		//glDisableVertexAttribArray(1);
-
-		glUseProgram(0);
-
-		vertices->Unbind();
-
-		indices->Unbind();
-
-		ssbo->Unbind();
-		texture->Unbind();
 
 		//glBindVertexArray(0);
 	}
