@@ -31,8 +31,8 @@ protected:
 
 	struct BytedPointCloudSSBO
 	{
-		glm::vec3* positions;
-		glm::vec4* colors;
+		glm::vec3 positions;
+		glm::vec4 colors;
 	};
 public:
 	GENERATED_ACTOR_BODY(SPointCloudActor)
@@ -43,7 +43,7 @@ public:
 		vertices = new VertexBuffer();
 		indices = new IndexBuffer();
 
-		ssbo = new ShaderStorageBuffer(0, 0, 3);
+		//ssbo = new ShaderStorageBuffer(0, 0, 3);
 
 		//glGenVertexArrays(1, &VAO);
 	}
