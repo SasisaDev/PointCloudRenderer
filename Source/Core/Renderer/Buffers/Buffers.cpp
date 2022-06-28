@@ -1,6 +1,7 @@
 ﻿#include "Buffers.h"
 
 UniformBuffer::UniformBuffer(void* data, size_t size, int binding)
+	: Binding(binding)
 {
 	glGenBuffers(1, &bufferID);
 	glBindBuffer(GL_UNIFORM_BUFFER, bufferID);
@@ -96,9 +97,9 @@ ShaderStorageBuffer::ShaderStorageBuffer(void* data, size_t size, int binding)
 {
 	glGenBuffers(1, &bufferID);
 	glBindBuffer(GL_SHADER_STORAGE_BUFFER, bufferID);
-	glBufferData(GL_SHADER_STORAGE_BUFFER, size, data, GL_STATIC_DRAW); //sizeof(data) only works for statically sized C/C++ arrays.
+	glBufferData(GL_SHADER_STORAGE_BUFFER, size, data, GL_STATIC_DRAW);
 	glBindBufferBase(GL_SHADER_STORAGE_BUFFER, binding, bufferID);
-	glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0); // unbind
+	glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
 }
 
 void ShaderStorageBuffer::UpdateBuffer(void* data, size_t size)

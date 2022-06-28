@@ -12,8 +12,8 @@ protected:
 	ShaderStorageBuffer* ssbo;
 
 	struct {
-		glm::mat4 Model;
 		glm::vec4 Tint;
+		glm::mat4 Model;
 	} ssboData;
 
 	void UpdateSSBO();

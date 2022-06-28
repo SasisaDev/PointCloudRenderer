@@ -10,7 +10,9 @@ WidgetLayer::WidgetLayer()
 	glfwGetWindowSize(glfwGetCurrentContext(), &w, &h);
 
 	const float aspect = w / std::clamp((float)h, std::numeric_limits<float>::epsilon(), 9169.0f);
-	Object.Projection = glm::ortho(-1.0f, 1.0f, -1.0f * aspect, 1.0f * aspect, 0.1f, 100.0f);
+	//Object.Projection = glm::ortho(-1.0f, 1.0f, -1.0f * aspect, 1.0f * aspect, -1000.0f, 1000.0f);
+	//Object.Projection = glm::ortho(-1, 1, -1, 1, -100, 100);
+	Object.Projection = glm::ortho(0.f, (float)w, 0.f, (float)h, -10.f, 10.f);
 
 	Uniform = new UniformBuffer(reinterpret_cast<void*>(&Object), sizeof(Object), 1);
 }

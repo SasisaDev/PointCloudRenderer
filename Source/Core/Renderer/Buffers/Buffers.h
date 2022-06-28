@@ -45,13 +45,13 @@ public:
 class UniformBuffer
 {
 protected:
-	unsigned int bufferID;
+	unsigned int bufferID, Binding;
 public:
 	UniformBuffer(void* data, size_t size, int binding);
 
 	void UpdateBuffer(void* data, size_t offset, size_t size);
 	
-	void Bind() { glBindBuffer(GL_UNIFORM_BUFFER, bufferID); }
+	void Bind() { glBindBuffer(GL_UNIFORM_BUFFER, bufferID); glBindBufferBase(GL_UNIFORM_BUFFER, Binding, bufferID); }
 };
 
 class ShaderStorageBuffer

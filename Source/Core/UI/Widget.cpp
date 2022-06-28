@@ -119,6 +119,13 @@ bool UWidget::OnEvent(const Event& event)
 	int y;
 	Transform2D screenspace;
 
+	bool handled = false;
+
+	for (auto child : Children)
+	{
+		handled |= child->OnEvent(event);
+	}
+
 	switch (event.EventAction)
 	{
 	case EVENT_MOUSEBUTTON_DOWN:
@@ -137,7 +144,7 @@ bool UWidget::OnEvent(const Event& event)
 		break;
 	case EVENT_MOUSEBUTTON_UP:
 		x = reinterpret_cast<int>(event.Parameters[0]);
-		y = reinterpret_cast<int>(event.Parameters[1]);
+		y = reinterpret_cast<int>(event.Parameters[1]); 
 
 		screenspace = CalculateTransformOnScreenspace();
 
@@ -149,7 +156,8 @@ bool UWidget::OnEvent(const Event& event)
 		}
 		break;
 	}
-	return false;
+
+	return handled;
 }
 
 void UWidget::DrawBrush(Mesh* mesh, SBrush* brush)

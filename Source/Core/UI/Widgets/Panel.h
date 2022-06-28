@@ -9,8 +9,8 @@ public:
 	{
 		mesh = new Mesh(Mesh::Plane());
 
-		WidgetDetails.transform.x = 0;
-		WidgetDetails.transform.y = 1;
+		WidgetDetails.transform.x = 100;
+		WidgetDetails.transform.y = 350;
 		WidgetDetails.transform.cx = 350;
 		WidgetDetails.transform.cy = 100;
 
