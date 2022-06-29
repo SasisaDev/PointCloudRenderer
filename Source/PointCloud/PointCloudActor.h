@@ -55,6 +55,8 @@ public:
 		indices->SetData(std::vector<int> {
 			0, 1, 2, 3, 2, 1
 		});
+
+		glGenVertexArrays(1, &VAO);
 	}
 	
 	void RebuildMesh();

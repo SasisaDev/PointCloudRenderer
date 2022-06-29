@@ -16,8 +16,6 @@ protected:
 		glm::mat4 Model;
 	} ssboData;
 
-	void UpdateSSBO();
-
 	STexture2D* texture;
 	TColor tint;
 	static SMaterial* material;
@@ -27,13 +25,16 @@ public:
 	SBrush(std::string name, STexture2D* tex, TColor Tint = glm::vec4(1.0f));
 public:
 
-	void SetTexture(STexture2D* tex) { texture = tex; UpdateSSBO(); }
+	void SetTexture(STexture2D* tex) { texture = tex; }
 	STexture2D* GetTexture() const { return texture; }
 
-	void SetTint(TColor _tint) { tint = _tint; UpdateSSBO(); }
+	void SetTint(TColor _tint) { tint = _tint; }
 	TColor GetTint() const { return tint; }
 
-	void SetModel(glm::mat4 model) { ssboData.Model = model; UpdateSSBO(); }
+	void SetModel(glm::mat4 model) { ssboData.Model = model;}
+	glm::mat4 GetModel() const { return ssboData.Model; }
+
+	void UpdateSSBO();
 
 	void Bind(int textureSlot);
 	void Unbind();

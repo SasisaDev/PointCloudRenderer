@@ -1,4 +1,4 @@
-#version 330
+#version 430
 
 layout (binding = 1) uniform WidgetUniformBuffer
 {

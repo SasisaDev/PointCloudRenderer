@@ -5,6 +5,7 @@
 class UPanel : public UWidget
 {
 public:
+	unsigned int vao;
 	GENERATED_WIDGET_BODY(UPanel, UWidget)
 	{
 		mesh = new Mesh(Mesh::Plane());
@@ -21,11 +22,14 @@ public:
 			"PanelBrush",
 			NewObject(STexture2D, "PanelBrushTexture", "Textures/UI/Panel")
 			);
+
+		glGenVertexArrays(1, &vao);
 	}
 public:
 	SBrush* brush;
 	Mesh* mesh;
 
+	virtual void Update(float dt) override;
 	virtual void OnPaint() override;
 };
 

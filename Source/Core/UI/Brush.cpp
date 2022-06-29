@@ -40,7 +40,7 @@ void SBrush::Bind(int textureSlot)
 	texture->Bind(textureSlot);
 	ssbo->Bind();
 	material->Use();
-	material->SetUniform1i("Texture", textureSlot);
+	//material->SetUniform1i("Texture", textureSlot);
 	//material->SetUniform4f("Tint", tint.r, tint.g, tint.b, tint.a);
 	glEnableVertexAttribArray(glGetAttribLocation(material->GetProgramID(), "Position"));
 	glVertexAttribPointer(
@@ -56,7 +56,7 @@ void SBrush::Bind(int textureSlot)
 void SBrush::Unbind()
 {
 	glDisableVertexAttribArray(glGetAttribLocation(material->GetProgramID(), "Position"));
-	material->Unuse();
-	texture->Unbind();
-	ssbo->Unbind();
+	//material->Unuse();
+	//texture->Unbind();
+	//ssbo->Unbind();
 }

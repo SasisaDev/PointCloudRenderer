@@ -15,9 +15,9 @@ Application::Application()
 	}
 }
 
-Engine* Application::CreateEngine(std::string Title, int width, int height)
+Engine* Application::CreateEngine(std::string Title, int width, int height, int layers)
 {
-	Engine* engine = new Engine(Title, width, height);
+	Engine* engine = new Engine(Title, width, height, layers);
 	glfwMakeContextCurrent(engine->GetWindow()->GetHandle());
 	engines.push_back(engine);
 

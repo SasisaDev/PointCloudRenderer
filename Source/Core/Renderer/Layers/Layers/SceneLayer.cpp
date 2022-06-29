@@ -40,8 +40,6 @@ void SceneLayer::Render()
 	{
 		actor->Render();
 	}
-
-	glDisable(GL_DEPTH_TEST);
 }
 
 void SceneLayer::OnEvent(const Event& e)

@@ -44,7 +44,7 @@ int SPointCloudActor::Render()
 {
 	if (instances > 0)
 	{
-		//glBindVertexArray(VAO);
+		glBindVertexArray(VAO);
 
 		indices->Bind();
 		vertices->Bind();
@@ -60,11 +60,11 @@ int SPointCloudActor::Render()
 
 		glUseProgram(material->GetProgramID());
 
-		material->SetUniform1i("tex", 0);
+		//material->SetUniform1i("tex", 0);
 
 		glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, instances);
 
-		glDisableVertexAttribArray(0);
+		//glDisableVertexAttribArray(0);
 		//glDisableVertexAttribArray(1);
 
 		//glBindVertexArray(0);

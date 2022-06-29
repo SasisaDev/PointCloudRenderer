@@ -1,6 +1,6 @@
 #include "Widget.h"
 
-#include <glm/ext/matrix_transform.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 Transform2D UWidget::CalculateTransformOnScreenspace()
 {
@@ -164,7 +164,6 @@ void UWidget::DrawBrush(Mesh* mesh, SBrush* brush)
 {
 	mesh->Bind();
 
-	brush->SetModel(Model);
 	brush->Bind(0);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_FLOAT, 0);

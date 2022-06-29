@@ -12,7 +12,7 @@ public:
 	static Application* GApplication;
 
 	Application();
-	Engine* CreateEngine(std::string Title, int width, int height);
+	Engine* CreateEngine(std::string Title, int width, int height, int layers = LAYER_SCENE | LAYER_WIDGET);
 
 	void Loop();
 };
