@@ -5,25 +5,23 @@
 class UPanel : public UWidget
 {
 public:
-	unsigned int vao;
 	GENERATED_WIDGET_BODY(UPanel, UWidget)
 	{
 		mesh = new Mesh(Mesh::Plane());
 
-		WidgetDetails.transform.x = 100;
-		WidgetDetails.transform.y = 350;
+		WidgetDetails.transform.x = 0;
+		WidgetDetails.transform.y = 0;
 		WidgetDetails.transform.cx = 350;
 		WidgetDetails.transform.cy = 100;
 
 		WidgetDetails.alignment.align = ALIGN_LEFT | ALIGN_TOP;
-		
+		WidgetDetails.alignment.stretch = STRETCH_HORIZONTAL;
+
 		brush = NewObject(
 			SBrush, 
 			"PanelBrush",
 			NewObject(STexture2D, "PanelBrushTexture", "Textures/UI/Panel")
 			);
-
-		glGenVertexArrays(1, &vao);
 	}
 public:
 	SBrush* brush;

@@ -32,6 +32,7 @@ void WidgetLayer::OnUpdate()
 void WidgetLayer::Render()
 {
 	glDisable(GL_DEPTH_TEST);
+	//glDisable(GL_CULL_FACE);
 
 	Uniform->Bind();
 
@@ -50,8 +51,7 @@ void WidgetLayer::OnEvent(const Event& e)
 		float Height = (float)reinterpret_cast<int>(e.Parameters[1]);
 
 		WidgetUniformBuffer buff;
-		const float aspect = Width / std::clamp(Height, std::numeric_limits<float>::epsilon(), 9169.0f);
-		buff.Projection = glm::ortho(-1.0f, 1.0f, -1.0f * aspect, 1.0f * aspect, 0.1f, 100.0f);
+		buff.Projection = glm::ortho(0.f, (float)Width, 0.f, (float)Height, -10.f, 10.f);
 
 		Uniform->UpdateBuffer(&buff.Projection, offsetof(WidgetUniformBuffer, Projection), sizeof(glm::mat4));
 		break;

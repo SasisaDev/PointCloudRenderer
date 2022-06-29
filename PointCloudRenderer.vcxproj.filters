@@ -239,5 +239,7 @@
     <None Include="Shaders\PointCloud\Point.frag" />
     <None Include="Shaders\LayerStack.vert" />
     <None Include="Shaders\LayerStack.frag" />
+    <None Include="Shaders\Debug\Simple.vert" />
+    <None Include="Shaders\Debug\Simple.frag" />
   </ItemGroup>
 </Project>

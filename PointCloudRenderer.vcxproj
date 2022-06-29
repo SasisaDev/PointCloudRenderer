@@ -219,6 +219,8 @@
   <ItemGroup>
     <None Include="Shaders\Debug\Debug.frag" />
     <None Include="Shaders\Debug\Debug.vert" />
+    <None Include="Shaders\Debug\Simple.frag" />
+    <None Include="Shaders\Debug\Simple.vert" />
     <None Include="Shaders\LayerStack.frag" />
     <None Include="Shaders\LayerStack.vert" />
     <None Include="Shaders\PointCloud\Point.frag" />

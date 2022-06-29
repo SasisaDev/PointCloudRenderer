@@ -12,6 +12,5 @@ void UPanel::Update(float dt)
 
 void UPanel::OnPaint()
 {
-	glBindVertexArray(vao);
 	DrawBrush(mesh, brush);
 }

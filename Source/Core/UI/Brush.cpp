@@ -42,20 +42,11 @@ void SBrush::Bind(int textureSlot)
 	material->Use();
 	//material->SetUniform1i("Texture", textureSlot);
 	//material->SetUniform4f("Tint", tint.r, tint.g, tint.b, tint.a);
-	glEnableVertexAttribArray(glGetAttribLocation(material->GetProgramID(), "Position"));
-	glVertexAttribPointer(
-		glGetAttribLocation(material->GetProgramID(), "Position"),  // attribute
-		3,                  // number of elements per vertex, here (x,y)
-		GL_FLOAT,           // the type of each element
-		GL_FALSE,           // take our values as-is
-		0,                  // no extra data between each position
-		0                   // offset of first element
-	);
 }
 
 void SBrush::Unbind()
 {
-	glDisableVertexAttribArray(glGetAttribLocation(material->GetProgramID(), "Position"));
+	//glDisableVertexAttribArray(glGetAttribLocation(material->GetProgramID(), "Position"));
 	//material->Unuse();
 	//texture->Unbind();
 	//ssbo->Unbind();

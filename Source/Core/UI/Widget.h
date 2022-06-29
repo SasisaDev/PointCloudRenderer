@@ -10,8 +10,8 @@
 
 #include <vector>
 
-#define WIDGETSPACE_X 1920
-#define WIDGETSPACE_Y 1080
+#define WIDGETSPACE_X 1920.0f
+#define WIDGETSPACE_Y 1080.0f
 
 #define GENERATED_WIDGET_BODY(className, Parent, ...) className(std::string name, const WidgetCreateInfo& info, __VA_ARGS__) : Parent(name, info)
 
@@ -44,8 +44,11 @@ class UWidget : public SObject
 {
 protected:
 	glm::mat4 Model;
+	unsigned int vao;
 public:
-	UWidget(std::string name, const WidgetCreateInfo& info) : SObject(name), WidgetDetails(info) {}
+	UWidget(std::string name, const WidgetCreateInfo& info) : SObject(name), WidgetDetails(info) {
+		glGenVertexArrays(1, &vao);
+	}
 public:
 	WidgetInfo WidgetDetails;
 

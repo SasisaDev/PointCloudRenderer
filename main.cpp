@@ -40,8 +40,6 @@ int main(int argc, char* argv[])
 	}
 	SCameraActor* Camera = MainScene->SpawnActor<SCameraActor>(ActorCreateInfo("Camera"));
 
-	SCameraSubsystem* CamSystem = MainScene->CreateSubsystem<SCameraSubsystem>();
-
 	UPanel* TestWidget = CreateWidget(UPanel, "MainWidget", WidgetCreateInfo());
 	PCREngine->AddWidget(TestWidget);
 

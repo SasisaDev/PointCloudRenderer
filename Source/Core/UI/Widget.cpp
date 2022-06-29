@@ -162,9 +162,21 @@ bool UWidget::OnEvent(const Event& event)
 
 void UWidget::DrawBrush(Mesh* mesh, SBrush* brush)
 {
-	mesh->Bind();
-
 	brush->Bind(0);
 
-	glDrawElements(GL_TRIANGLES, 6, GL_FLOAT, 0);
+	glBindVertexArray(vao);
+
+	mesh->Bind();
+
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(
+		0,  // attribute
+		3,                  // number of elements per vertex, here (x,y)
+		GL_FLOAT,           // the type of each element
+		GL_FALSE,           // take our values as-is
+		0,                  // no extra data between each position
+		0                   // offset of first element
+	);
+
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
