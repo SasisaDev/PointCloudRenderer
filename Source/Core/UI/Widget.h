@@ -56,6 +56,8 @@ public:
 
 	Transform2D CalculateTransformOnScreenspace();
 
+	Transform2D CalculateTransformOnWindow();
+
 	virtual void AddChild(UWidget* child);
 
 	void Render();
