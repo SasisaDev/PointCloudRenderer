@@ -91,9 +91,9 @@ void Engine::DispatchEvents(const Event& event)
 	{
 		for (auto widget : widgets)
 		{
-			if (widget->OnEvent(event) == true)
+			if (!Handled)
 			{
-				Handled = true;
+				Handled |= widget->OnEvent(event);
 			}
 		}
 	}

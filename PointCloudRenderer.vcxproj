@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Valera\source\repos\PointCloudRenderer\deps;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glm;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\lib\Release\Win32;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\freetype\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glm;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\freetype\releasestatic\vs2015-2022\win32;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\lib\Release\Win32;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Core\UI\Brush.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Source\Core\UI\Text\TextManager.cpp" />
     <ClCompile Include="Source\Core\UI\Widgets\Panel.cpp" />
     <ClCompile Include="Source\Core\Application.cpp" />
     <ClCompile Include="Source\Core\Camera\Camera.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="Source\Core\Scene\Actor\Actor.h" />
     <ClInclude Include="Source\Core\Scene\Scene.h" />
     <ClInclude Include="Source\Core\Types\Transform.h" />
+    <ClInclude Include="Source\Core\UI\Text\TextManager.h" />
     <ClInclude Include="Source\Core\UI\Widget.h" />
     <ClInclude Include="Source\Core\UI\Widgets\Panel.h" />
     <ClInclude Include="Source\Core\Window\Window.h" />
