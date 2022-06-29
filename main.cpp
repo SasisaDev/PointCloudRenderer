@@ -6,7 +6,7 @@
 #include "Source/Core/Debug/DebugActor.h"
 #include "Source/Core/Camera/CameraSubsystem.h"
 
-#include "Source/Core/UI/Widgets/Panel.h"
+#include "Source/PointCloud/UI/MenubarWidget.h"
 
 #define VERSION "0.0.1"
 
@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 	}
 	SCameraActor* Camera = MainScene->SpawnActor<SCameraActor>(ActorCreateInfo("Camera"));
 
-	UPanel* TestWidget = CreateWidget(UPanel, "MainWidget", WidgetCreateInfo());
+	UMenubarWidget* TestWidget = CreateWidget(UMenubarWidget, "MainWidget", WidgetCreateInfo());
 	PCREngine->AddWidget(TestWidget);
 
 	PCREngine->SetScene(MainScene);

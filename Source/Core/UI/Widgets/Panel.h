@@ -15,7 +15,7 @@ public:
 		WidgetDetails.transform.cy = 100;
 
 		WidgetDetails.alignment.align = ALIGN_LEFT | ALIGN_TOP;
-		WidgetDetails.alignment.stretch = STRETCH_HORIZONTAL;
+		//WidgetDetails.alignment.stretch = STRETCH_HORIZONTAL;
 
 		brush = NewObject(
 			SBrush, 

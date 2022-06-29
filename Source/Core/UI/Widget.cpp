@@ -8,14 +8,30 @@ Transform2D UWidget::CalculateTransformOnScreenspace()
 	if (window)
 	{
 		float SizeFactorX, SizeFactorY, aspect;
-		int x, y;
-		glfwGetWindowSize(window->GetHandle(), &x, &y);
-		SizeFactorX = x / WIDGETSPACE_X;
-		SizeFactorY = y / WIDGETSPACE_Y;
-		aspect = (float)x/(float)y;
+		int width, height;
+		glfwGetWindowSize(window->GetHandle(), &width, &height);
+		SizeFactorX = width / WIDGETSPACE_X;
+		SizeFactorY = height / WIDGETSPACE_Y;
+		aspect = (float)width/(float)height;
 
 		Transform2D final = WidgetDetails.transform;
 #define _bit(a, b )(WidgetDetails.alignment. a & b) == b
+
+		if (_bit(stretch, STRETCH_VERTICAL))
+		{
+			final.cx = WidgetDetails.transform.cx;
+			final.cy = (WidgetDetails.transform.cy * SizeFactorY);
+		}
+		else if (_bit(stretch, STRETCH_HORIZONTAL))
+		{
+			final.cx = (WidgetDetails.transform.cx * SizeFactorX);
+			final.cy = WidgetDetails.transform.cy;
+		}
+		else
+		{
+			final.cx = WidgetDetails.transform.cx;
+			final.cy = WidgetDetails.transform.cy;
+		}
 
 		if (_bit(align, ALIGN_BOTTOM))
 		{
@@ -41,7 +57,7 @@ Transform2D UWidget::CalculateTransformOnScreenspace()
 					final.x = (WidgetDetails.transform.x * SizeFactorX);
 				}
 			}
-			final.y = (WidgetDetails.transform.y);
+			final.y = ((WidgetDetails.transform.y * SizeFactorY) - height) * -1 - final.cy;
 		}
 		else if (_bit(align, ALIGN_LEFT))
 		{
@@ -49,7 +65,7 @@ Transform2D UWidget::CalculateTransformOnScreenspace()
 			{
 				if (_bit(align, ALIGN_BOTTOM))
 				{
-					final.y = (WidgetDetails.transform.y / y * SizeFactorY);
+					final.y = (WidgetDetails.transform.y / height * SizeFactorY);
 				}
 				final.y = (WidgetDetails.transform.y * SizeFactorY);
 				final.x = (WidgetDetails.transform.x);
@@ -69,15 +85,6 @@ Transform2D UWidget::CalculateTransformOnScreenspace()
 				}
 				final.x = (WidgetDetails.transform.x * SizeFactorX);
 			}
-		}
-
-		if (_bit(stretch, STRETCH_VERTICAL))
-		{
-			final.cy = (WidgetDetails.transform.cy * SizeFactorY);
-		}
-		else if (_bit(stretch, STRETCH_HORIZONTAL))
-		{
-			final.cx = (WidgetDetails.transform.cx * SizeFactorX);
 		}
 
 #undef _bit
