@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/UI/Widgets/Panel.h"
+#include "../../Core/UI/Widgets/Button.h"
 #include "../../Core/Renderer/Mesh/Mesh.h"
 
 class UMenubarWidget : public UPanel
@@ -16,6 +17,15 @@ public:
 
 		WidgetDetails.alignment.align = ALIGN_LEFT | ALIGN_TOP;
 		WidgetDetails.alignment.stretch = STRETCH_HORIZONTAL;
+
+		WidgetCreateInfo buttonFile = {};
+		buttonFile.transform.x = 0;
+		buttonFile.transform.y = 0;
+		buttonFile.transform.cx = 50;
+		buttonFile.transform.cy = 20;
+		buttonFile.alignment.align = ALIGN_LEFT | ALIGN_TOP;
+
+		AddChild(CreateWidget(UButton, "File", buttonFile));
 	}
 public:
 

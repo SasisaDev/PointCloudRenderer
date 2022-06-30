@@ -202,6 +202,11 @@ void UWidget::Render()
 
 void UWidget::Update(float DeltaTime)
 {
+	for (auto child : Children)
+	{
+		child->Update(DeltaTime);
+	}
+
 	// TO-DO: Memoize
 	Transform2D rect = CalculateTransformOnScreenspace();
 	Model = glm::translate(glm::mat4(1), glm::vec3(rect.x, rect.y, /*Z-Depth*/ 0));
@@ -252,6 +257,24 @@ bool UWidget::OnEvent(const Event& event)
 		{
 			this->OnButtonUp();
 			return true;
+		}
+		break;
+	case EVENT_CURSOR_POSITION:
+		x = reinterpret_cast<int>(event.Parameters[0]);
+		y = reinterpret_cast<int>(event.Parameters[1]);
+
+		screenspace = CalculateTransformOnWindow();
+
+		if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
+			&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
+		{
+			bIsOverlaping = true;
+			this->OnOverlapBegin();
+		}
+		else if(bIsOverlaping == true)
+		{
+			bIsOverlaping = false;
+			this->OnOverlapEnd();
 		}
 		break;
 	}

@@ -67,6 +67,10 @@ public:
 	virtual void OnPaint();
 	virtual bool OnEvent(const Event& event);
 
+	bool bIsOverlaping = false;
+
+	virtual void OnOverlapBegin() {}
+	virtual void OnOverlapEnd() {}
 	virtual void OnButtonDown() {}
 	virtual void OnButtonUp() {}
 

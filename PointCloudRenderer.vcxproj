@@ -77,6 +77,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\freetype\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glm;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\include;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Valera\source\repos\PointCloudRenderer\deps\freetype\releasestatic\vs2015-2022\win32;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glew\lib\Release\Win32;C:\Users\Valera\source\repos\PointCloudRenderer\deps\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -106,6 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,6 +149,7 @@
     <ClCompile Include="Source\Core\UI\Brush.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\Core\UI\Text\TextManager.cpp" />
+    <ClCompile Include="Source\Core\UI\Widgets\Button.cpp" />
     <ClCompile Include="Source\Core\UI\Widgets\Panel.cpp" />
     <ClCompile Include="Source\Core\Application.cpp" />
     <ClCompile Include="Source\Core\Camera\Camera.cpp" />
@@ -168,7 +172,7 @@
     <ClCompile Include="Source\Core\Renderer\Renderer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Renderers\OpenGLRenderer.cpp" />
     <ClCompile Include="Source\Core\Renderer\Shader\Shader.cpp" />
-    <ClCompile Include="Source\Core\Renderer\Texture\Texture2D.cpp" />
+    <ClCompile Include="Source\Core\Renderer\Texture\Texture.cpp" />
     <ClCompile Include="Source\Core\Scene\Actor\Actor.cpp" />
     <ClCompile Include="Source\Core\Scene\Scene.cpp" />
     <ClCompile Include="Source\Core\UI\Widget.cpp" />
@@ -205,12 +209,13 @@
     <ClInclude Include="Source\Core\Renderer\Renderer.h" />
     <ClInclude Include="Source\Core\Renderer\Renderers\OpenGLRenderer.h" />
     <ClInclude Include="Source\Core\Renderer\Shader\Shader.h" />
-    <ClInclude Include="Source\Core\Renderer\Texture\Texture2D.h" />
+    <ClInclude Include="Source\Core\Renderer\Texture\Texture.h" />
     <ClInclude Include="Source\Core\Scene\Actor\Actor.h" />
     <ClInclude Include="Source\Core\Scene\Scene.h" />
     <ClInclude Include="Source\Core\Types\Transform.h" />
     <ClInclude Include="Source\Core\UI\Text\TextManager.h" />
     <ClInclude Include="Source\Core\UI\Widget.h" />
+    <ClInclude Include="Source\Core\UI\Widgets\Button.h" />
     <ClInclude Include="Source\Core\UI\Widgets\Panel.h" />
     <ClInclude Include="Source\Core\Window\Window.h" />
     <ClInclude Include="Source\PointCloud\Camera\PointCloudCamera.h" />

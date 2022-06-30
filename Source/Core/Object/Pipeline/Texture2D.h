@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Object.h"
-#include "../../Renderer/Texture/Texture2D.h"
+#include "../../Renderer/Texture/Texture.h"
 
 class STexture2D : public SObject
 {

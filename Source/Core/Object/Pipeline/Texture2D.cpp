@@ -1,5 +1,5 @@
 #include "Texture2D.h"
-#include "..\..\Renderer\Texture\Texture2D.h"
+#include "..\..\Renderer\Texture\Texture.h"
 
 STexture2D::STexture2D(std::string name, std::string texturePath)
 	:SObject(name)

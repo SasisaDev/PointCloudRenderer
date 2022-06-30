@@ -9,13 +9,13 @@ public:
 	{
 		mesh = new Mesh(Mesh::Plane());
 
-		WidgetDetails.transform.x = 0;
-		WidgetDetails.transform.y = 0;
-		WidgetDetails.transform.cx = 350;
-		WidgetDetails.transform.cy = 100;
+		//WidgetDetails.transform.x = 0;
+		//WidgetDetails.transform.y = 0;
+		//WidgetDetails.transform.cx = 350;
+		//WidgetDetails.transform.cy = 100;
 
-		WidgetDetails.alignment.align = ALIGN_LEFT | ALIGN_TOP;
-		//WidgetDetails.alignment.stretch = STRETCH_HORIZONTAL;
+		//WidgetDetails.alignment.align = ALIGN_LEFT | ALIGN_TOP;
+		////WidgetDetails.alignment.stretch = STRETCH_HORIZONTAL;
 
 		brush = NewObject(
 			SBrush, 

@@ -96,7 +96,7 @@
     <ClCompile Include="Source\Core\Events\EventDispatcher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Core\Renderer\Texture\Texture2D.cpp">
+    <ClCompile Include="Source\Core\Renderer\Texture\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\PointCloud\UI\MenubarWidget.cpp">
@@ -121,6 +121,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\PointCloud\Camera\PointCloudCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\UI\Widgets\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -209,7 +212,7 @@
     <ClInclude Include="Source\Core\Events\EventDispatcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Core\Renderer\Texture\Texture2D.h">
+    <ClInclude Include="Source\Core\Renderer\Texture\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\PointCloud\UI\MenubarWidget.h">
@@ -237,6 +240,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\PointCloud\Camera\PointCloudCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\UI\Widgets\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
