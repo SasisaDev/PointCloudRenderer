@@ -28,10 +28,10 @@ public:
 	void SetTexture(STexture2D* tex) { texture = tex; }
 	STexture2D* GetTexture() const { return texture; }
 
-	void SetTint(TColor _tint) { tint = _tint; UpdateSSBO(); }
+	void SetTint(TColor _tint) { tint = _tint; }
 	TColor GetTint() const { return tint; }
 
-	void SetModel(glm::mat4 model) { ssboData.Model = model; }
+	void SetModel(glm::mat4 model) { ssboData.Model = model; ssbo->UpdateBuffer(&ssboData, sizeof(ssboData)); }
 	glm::mat4 GetModel() const { return ssboData.Model; }
 
 	void UpdateSSBO();

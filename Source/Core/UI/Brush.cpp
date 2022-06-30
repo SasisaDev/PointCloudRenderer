@@ -4,9 +4,12 @@ SMaterial* SBrush::material = nullptr;
 
 void SBrush::UpdateSSBO()
 {
-	ssboData.Tint = tint;
+	if (ssboData.Tint != tint)
+	{
+		ssboData.Tint = tint;
 
-	ssbo->UpdateBuffer(&ssboData, sizeof(ssboData));
+		ssbo->UpdateBuffer(&ssboData, sizeof(ssboData));
+	}
 }
 
 SBrush::SBrush(std::string name)

@@ -18,7 +18,7 @@ void SceneLayer::OnUpdate()
 {
 	if (_scene)
 	{
-		for (SActor* actor : _scene->GetActors())
+		for (SActor* actor : _scene->GetActors<SActor>())
 		{
 			if (SCameraActor* camera = dynamic_cast<SCameraActor*>(actor))
 			{
@@ -37,7 +37,7 @@ void SceneLayer::Render()
 
 	Uniform->Bind();
 
-	for (SActor* actor : _scene->GetActors())
+	for (SActor* actor : _scene->GetActors<SActor>())
 	{
 		actor->Render();
 	}

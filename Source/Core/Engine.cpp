@@ -40,7 +40,7 @@ void Engine::SetScene(SScene* Scene)
 
 	Logger::Log("Loaded scene: " + scene->ObjectName);
 	Logger::Log("Loaded actors: ");
-	for (auto actor : scene->GetActors())
+	for (auto actor : scene->GetActors<SActor>())
 	{
 		//Renderer->AddRenderObject(actor);
 		std::stringstream stream;

@@ -173,6 +173,7 @@
     <ClCompile Include="Source\Core\Scene\Scene.cpp" />
     <ClCompile Include="Source\Core\UI\Widget.cpp" />
     <ClCompile Include="Source\Core\Window\Window.cpp" />
+    <ClCompile Include="Source\PointCloud\Camera\PointCloudCamera.cpp" />
     <ClCompile Include="Source\PointCloud\Importers\Importer.cpp" />
     <ClCompile Include="Source\PointCloud\Importers\ply\plyImporter.cpp" />
     <ClCompile Include="Source\PointCloud\PointCloudActor.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="Source\Core\UI\Widget.h" />
     <ClInclude Include="Source\Core\UI\Widgets\Panel.h" />
     <ClInclude Include="Source\Core\Window\Window.h" />
+    <ClInclude Include="Source\PointCloud\Camera\PointCloudCamera.h" />
     <ClInclude Include="Source\PointCloud\Importers\Importer.h" />
     <ClInclude Include="Source\PointCloud\Importers\ply\plyImporter.h" />
     <ClInclude Include="Source\PointCloud\PointCloudActor.h" />

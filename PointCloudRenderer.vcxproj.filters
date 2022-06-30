@@ -120,6 +120,9 @@
     <ClCompile Include="Source\Core\UI\Text\TextManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\PointCloud\Camera\PointCloudCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Engine.h">
@@ -231,6 +234,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Core\UI\Text\TextManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PointCloud\Camera\PointCloudCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

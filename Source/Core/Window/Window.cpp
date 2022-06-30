@@ -65,6 +65,18 @@ Window::Window(std::string title, int w, int h)
 			}
 		});
 
+	glfwSetCursorPosCallback(Handle, [](GLFWwindow* win, double xpos, double ypos)
+		{
+			Window* window = reinterpret_cast<Window*>(glfwGetWindowUserPointer(win));
+			if (window)
+			{
+				if (auto dispatcher = window->GetEventDispatcher())
+				{
+					dispatcher->Dispatch(Event(EVENT_CURSOR_POSITION, std::vector<void*>{reinterpret_cast<void*>((int)xpos), reinterpret_cast<void*>((int)ypos)}));
+				}
+			}
+		});
+
 	glfwMakeContextCurrent(Handle);
 
 	glewExperimental = GL_TRUE;

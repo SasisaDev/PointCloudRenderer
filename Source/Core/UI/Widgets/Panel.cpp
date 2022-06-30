@@ -6,8 +6,9 @@ void UPanel::Update(float dt)
 	if (brush->GetModel() != Model)
 	{
 		brush->SetModel(Model);
-		brush->UpdateSSBO();
 	}
+
+	brush->UpdateSSBO();
 }
 
 void UPanel::OnPaint()

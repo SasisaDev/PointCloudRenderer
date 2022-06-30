@@ -24,7 +24,7 @@ CameraModel SCameraActor::CalculateModel()
 
 void SCameraActor::Update(float DeltaTime)
 {
-	ActorConfig.transform.Location += movementVector * DeltaTime;
+	//ActorConfig.transform.Location += movementVector * DeltaTime;
 }
 
 void SCameraActor::OnEvent(const Event& event)
@@ -36,7 +36,7 @@ void SCameraActor::OnEvent(const Event& event)
 		Height = (float)reinterpret_cast<int>(event.Parameters[1]);
 		break;
 	case EVENT_KEY_DOWN:
-		if (event.IsKey(GLFW_KEY_W))
+		/*if (event.IsKey(GLFW_KEY_W))
 		{
 			movementVector.z = 0.005f;
 		}
@@ -59,10 +59,10 @@ void SCameraActor::OnEvent(const Event& event)
 		else if (event.IsKey(GLFW_KEY_LEFT_SHIFT))
 		{
 			movementVector.y = 0.005f;
-		}
+		}*/
 		break;
 	case EVENT_KEY_UP:
-		if (event.IsKey(GLFW_KEY_W))
+		/*if (event.IsKey(GLFW_KEY_W))
 		{
 			movementVector.z = 0;
 		}
@@ -85,7 +85,7 @@ void SCameraActor::OnEvent(const Event& event)
 		else if (event.IsKey(GLFW_KEY_LEFT_SHIFT))
 		{
 			movementVector.y = 0;
-		}
+		}*/
 		break;
 	default:
 		break;

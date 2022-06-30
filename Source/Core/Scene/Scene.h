@@ -2,6 +2,7 @@
 #include "./Actor/Actor.h"
 #include "../Object/Subsystem.h"
 #include <vector>
+#include <type_traits>
 
 class SScene : public SObject
 {
@@ -19,6 +20,8 @@ public:
 
 	template <typename _ActorClass>
 	_ActorClass* SpawnActor(const ActorCreateInfo& Info);
+	template <typename _ActorClass>
+	std::vector<_ActorClass*> GetActors();
 
 	template <typename _SysClass>
 	_SysClass* CreateSubsystem();
@@ -26,7 +29,7 @@ public:
 	template <typename _SysClass>
 	_SysClass* GetSubsystem();
 
-	std::vector<SActor*> GetActors() { return Actors; }
+	//std::vector<SActor*> GetActors() { return Actors; }
 	std::vector<SSubsystem*> GetSubsystems() { return Subsystems; }
 
 	void DispatchEvent(const Event& event);
@@ -43,6 +46,20 @@ _ActorClass* SScene::SpawnActor(const ActorCreateInfo& Info)
 
 	Actors.push_back(Actor);
 	return Actor;
+}
+
+template<typename _ActorClass>
+inline std::vector<_ActorClass*> SScene::GetActors()
+{
+	std::vector<_ActorClass*> array;
+	for (SActor* actor : Actors)
+	{
+		if (_ActorClass* typedActor = dynamic_cast<_ActorClass*>(actor))
+		{
+			array.push_back(typedActor);
+		}
+	}
+	return array;
 }
 
 template<typename _SysClass>

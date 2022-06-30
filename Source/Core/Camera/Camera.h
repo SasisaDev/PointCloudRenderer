@@ -25,7 +25,7 @@ public:
 	float Width = 1280, Height = 720;
 public:
 	
-	CameraModel CalculateModel();
+	virtual CameraModel CalculateModel();
 
 	virtual void Update(float DeltaTime) override;
 	virtual void OnEvent(const Event& event) override;

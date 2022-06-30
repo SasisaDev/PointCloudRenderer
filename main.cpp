@@ -4,7 +4,7 @@
 
 #include "Source/Core/Object/Pipeline/Material.h"
 #include "Source/Core/Debug/DebugActor.h"
-#include "Source/Core/Camera/CameraSubsystem.h"
+#include "Source/PointCloud/Camera/PointCloudCamera.h"
 
 #include "Source/PointCloud/UI/MenubarWidget.h"
 
@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
 		DbgActor3->ActorConfig.transform.Location.x = -7;
 		DbgActor3->ActorConfig.transform.Scale = glm::vec3(0.25);
 	}
-	SCameraActor* Camera = MainScene->SpawnActor<SCameraActor>(ActorCreateInfo("Camera"));
+	SPointCloudCameraActor* Camera = MainScene->SpawnActor<SPointCloudCameraActor>(ActorCreateInfo("Camera"));
 
 	UMenubarWidget* TestWidget = CreateWidget(UMenubarWidget, "MainWidget", WidgetCreateInfo());
 	PCREngine->AddWidget(TestWidget);
