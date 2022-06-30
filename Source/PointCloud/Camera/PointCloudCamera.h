@@ -18,10 +18,13 @@ public:
 		RodDistance = 50;
 	}
 
-	float RodDistance;
+	float RodDistance, oldX = 0, oldY = 0;
+	bool bRotateMouse = false;
 
 	virtual CameraModel CalculateModel() override;
 
 	virtual void Update(float dt) override;
+	
+	virtual void OnEvent(const Event& e) override;
 };
 

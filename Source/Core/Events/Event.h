@@ -23,4 +23,5 @@ public:
 	Event(unsigned int Action, std::vector<void*> Params);
 
 	bool IsKey(int key) const;
+	bool IsMouseButton(int btn) const;
 };

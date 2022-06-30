@@ -20,3 +20,18 @@ bool Event::IsKey(int key) const
 	}
 	return false;
 }
+
+bool Event::IsMouseButton(int btn) const
+{
+	if (EventAction == EVENT_MOUSEBUTTON_DOWN || EventAction == EVENT_MOUSEBUTTON_UP || EventAction == EVENT_MOUSEBUTTON)
+	{
+		if (Parameters.size() >= 3)
+		{
+			if (reinterpret_cast<int>(Parameters[2]) == btn)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}

@@ -55,11 +55,11 @@ Window::Window(std::string title, int w, int h)
 					glfwGetCursorPos(win, &xpos, &ypos);
 					if (action == GLFW_PRESS)
 					{
-						dispatcher->Dispatch(Event(EVENT_MOUSEBUTTON_DOWN, std::vector<void*>{reinterpret_cast<void*>((int)xpos), reinterpret_cast<void*>((int)ypos)}));
+						dispatcher->Dispatch(Event(EVENT_MOUSEBUTTON_DOWN, std::vector<void*>{reinterpret_cast<void*>((int)xpos), reinterpret_cast<void*>((int)ypos), reinterpret_cast<void*>((int)button)}));
 					}
 					else if (action == GLFW_RELEASE)
 					{
-						dispatcher->Dispatch(Event(EVENT_MOUSEBUTTON_UP, std::vector<void*>{reinterpret_cast<void*>((int)xpos), reinterpret_cast<void*>((int)ypos)}));
+						dispatcher->Dispatch(Event(EVENT_MOUSEBUTTON_UP, std::vector<void*>{reinterpret_cast<void*>((int)xpos), reinterpret_cast<void*>((int)ypos), reinterpret_cast<void*>((int)button)}));
 					}
 				}
 			}
@@ -73,6 +73,18 @@ Window::Window(std::string title, int w, int h)
 				if (auto dispatcher = window->GetEventDispatcher())
 				{
 					dispatcher->Dispatch(Event(EVENT_CURSOR_POSITION, std::vector<void*>{reinterpret_cast<void*>((int)xpos), reinterpret_cast<void*>((int)ypos)}));
+				}
+			}
+		});
+
+	glfwSetScrollCallback(Handle, [](GLFWwindow* win, double xoffset, double yoffset)
+		{
+			Window* window = reinterpret_cast<Window*>(glfwGetWindowUserPointer(win));
+			if (window)
+			{
+				if (auto dispatcher = window->GetEventDispatcher())
+				{
+					dispatcher->Dispatch(Event(EVENT_SCROLL, std::vector<void*>{reinterpret_cast<void*>((int)yoffset)}));
 				}
 			}
 		});
