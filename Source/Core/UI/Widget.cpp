@@ -228,55 +228,60 @@ bool UWidget::OnEvent(const Event& event)
 	for (auto child : Children)
 	{
 		handled |= child->OnEvent(event);
+		if (handled) break;
 	}
 
-	switch (event.EventAction)
+	if (!handled)
 	{
-	case EVENT_MOUSEBUTTON_DOWN:
-		x = reinterpret_cast<int>(event.Parameters[0]);
-		y = reinterpret_cast<int>(event.Parameters[1]);
-
-		screenspace = CalculateTransformOnWindow();
-
-		if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
-			&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
+		switch (event.EventAction)
 		{
-			Logger::Log("Click");
-			this->OnButtonDown();
-			return true;
-		}
-		break;
-	case EVENT_MOUSEBUTTON_UP:
-		x = reinterpret_cast<int>(event.Parameters[0]);
-		y = reinterpret_cast<int>(event.Parameters[1]); 
+		case EVENT_MOUSEBUTTON_DOWN:
+			x = reinterpret_cast<int>(event.Parameters[0]);
+			y = reinterpret_cast<int>(event.Parameters[1]);
 
-		screenspace = CalculateTransformOnWindow();
+			screenspace = CalculateTransformOnWindow();
 
-		if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
-			&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
-		{
-			this->OnButtonUp();
-			return true;
-		}
-		break;
-	case EVENT_CURSOR_POSITION:
-		x = reinterpret_cast<int>(event.Parameters[0]);
-		y = reinterpret_cast<int>(event.Parameters[1]);
+			if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
+				&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
+			{
+				handled |= this->OnButtonDown();
+				return handled;
+			}
+			break;
+		case EVENT_MOUSEBUTTON_UP:
+			x = reinterpret_cast<int>(event.Parameters[0]);
+			y = reinterpret_cast<int>(event.Parameters[1]);
 
-		screenspace = CalculateTransformOnWindow();
+			screenspace = CalculateTransformOnWindow();
 
-		if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
-			&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
-		{
-			bIsOverlaping = true;
-			this->OnOverlapBegin();
+			if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
+				&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
+			{
+				handled |= this->OnButtonUp();
+				return handled;
+			}
+			break;
+		case EVENT_CURSOR_POSITION:
+			x = reinterpret_cast<int>(event.Parameters[0]);
+			y = reinterpret_cast<int>(event.Parameters[1]);
+
+			screenspace = CalculateTransformOnWindow();
+
+			if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
+				&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
+			{
+				handled |= this->OnOverlapBegin();
+				bIsOverlaping = true;
+				return handled;
+			}
+			else if (bIsOverlaping == true)
+			{
+				handled |= this->OnOverlapEnd();
+				bIsOverlaping = false;
+				return handled;
+			}
+			break;
 		}
-		else if(bIsOverlaping == true)
-		{
-			bIsOverlaping = false;
-			this->OnOverlapEnd();
-		}
-		break;
 	}
 
 	return handled;

@@ -16,14 +16,37 @@ void UButton::OnPaint()
 	DrawBrush(mesh, brush);
 }
 
-void UButton::OnOverlapBegin()
+bool UButton::OnButtonDown()
 {
-	brush->SetTint(SelectedTint);
+	Logger::Log("Click");
+	brush->SetTint(PressedTint);
 	brush->UpdateSSBO();
+	return true;
 }
 
-void UButton::OnOverlapEnd()
+bool UButton::OnButtonUp()
+{
+	if (bIsOverlaping)
+	{
+		brush->SetTint(SelectedTint);
+		brush->UpdateSSBO();
+	}
+	return true;
+}
+
+bool UButton::OnOverlapBegin()
+{
+	if (!bIsOverlaping)
+	{
+		brush->SetTint(SelectedTint);
+		brush->UpdateSSBO();
+	}
+	return true;
+}
+
+bool UButton::OnOverlapEnd()
 {
 	brush->SetTint(NormalTint);
 	brush->UpdateSSBO();
+	return true;
 }

@@ -37,7 +37,10 @@ public:
 	virtual void Update(float dt) override;
 	virtual void OnPaint() override;
 
-	virtual void OnOverlapBegin() override;
-	virtual void OnOverlapEnd() override;
+	virtual bool OnButtonDown() override;
+	virtual bool OnButtonUp() override;
+			
+	virtual bool OnOverlapBegin() override;
+	virtual bool OnOverlapEnd() override;
 };
 

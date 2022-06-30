@@ -69,10 +69,10 @@ public:
 
 	bool bIsOverlaping = false;
 
-	virtual void OnOverlapBegin() {}
-	virtual void OnOverlapEnd() {}
-	virtual void OnButtonDown() {}
-	virtual void OnButtonUp() {}
+	virtual bool OnOverlapBegin()	{return false;}
+	virtual bool OnOverlapEnd()		{return false;}
+	virtual bool OnButtonDown()		{return false;}
+	virtual bool OnButtonUp()		{return false;}
 
 	void DrawBrush(Mesh* mesh, SBrush* brush);
 };
