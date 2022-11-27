@@ -8,6 +8,8 @@
 #include "../Core/Object/Pipeline/Texture2D.h"
 #include "../Core/Renderer/Buffers/Buffers.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+
 class SPointCloudActor : public SActor
 {
 protected:
@@ -25,13 +27,13 @@ protected:
 
 	struct
 	{
-		std::vector < glm::vec3 > positions;
+		std::vector < glm::mat4 > positions;
 		std::vector < glm::vec4 > colors;
 	} PointCloudSSBO;
 
 	struct BytedPointCloudSSBO
 	{
-		glm::vec3 positions;
+		glm::mat4 positions;
 		glm::vec4 colors;
 	};
 public:

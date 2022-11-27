@@ -10,8 +10,8 @@
 
 #include <vector>
 
-#define WIDGETSPACE_X 1920.0f
-#define WIDGETSPACE_Y 1080.0f
+#define WIDGETSPACE_X 1920.00
+#define WIDGETSPACE_Y 1080.00
 
 #define GENERATED_WIDGET_BODY(className, Parent, ...) className(std::string name, const WidgetCreateInfo& info, __VA_ARGS__) : Parent(name, info)
 
@@ -67,12 +67,16 @@ public:
 	virtual void OnPaint();
 	virtual bool OnEvent(const Event& event);
 
+	UWidget* SetVisible(bool visible) { bIsVisible = visible; return this; }
+
 	bool bIsOverlaping = false;
+	bool bConsumeInput = true;
+	bool bIsVisible = true;
 
 	virtual bool OnOverlapBegin()	{return false;}
 	virtual bool OnOverlapEnd()		{return false;}
-	virtual bool OnButtonDown()		{return false;}
-	virtual bool OnButtonUp()		{return false;}
+	virtual bool OnButtonDown()		{return bConsumeInput;}
+	virtual bool OnButtonUp()		{return bConsumeInput;}
 
 	void DrawBrush(Mesh* mesh, SBrush* brush);
 };
@@ -84,4 +88,4 @@ _T* CreateWidget(std::string name, const WidgetCreateInfo& info)
 	return Widget;
 }
 
-#define CreateWidget(_class, name, info, ...) new _class (name, info, __VA_ARGS__)
+#define CreateWidget(_class, name, info, ...) (new _class (name, info, __VA_ARGS__))

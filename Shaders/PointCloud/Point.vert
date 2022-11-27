@@ -1,4 +1,4 @@
-#version 330
+#version 430
 #define MAX_POINTS 2^32-1
 
 layout (binding = 0) uniform SceneUniformBuffer
@@ -11,7 +11,7 @@ layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec2 UV;
 
 struct CloudPoint {
-	vec3 position;
+	mat4 model;
 	vec4 color;
 };
 
@@ -25,7 +25,7 @@ out vec2 uv;
 
 mat4 billboard()
 {
-	mat4 ModelView = View;
+	mat4 ModelView = View * points[gl_InstanceID].model;
 
 	ModelView[0][0] = 1;
 	ModelView[0][1] = 0;
@@ -46,5 +46,5 @@ void main()
 {
 	uv = UV;
 	fragColor = points[gl_InstanceID].color;
-    gl_Position = Projection * billboard() * vec4(aPos + points[gl_InstanceID].position, 1);
+    gl_Position = Projection * billboard() * vec4(aPos, 1);
 }

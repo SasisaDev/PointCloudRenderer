@@ -4,6 +4,8 @@
 
 class UButton : public UWidget
 {
+protected:
+	std::function<void()> clickCallback;
 public:
 	GENERATED_WIDGET_BODY(UButton, UWidget)
 	{
@@ -33,6 +35,8 @@ public:
 
 	SBrush* brush;
 	Mesh* mesh;
+
+	UButton* OnClickCallback(const std::function<void()>& callback) { clickCallback = callback; return this; }
 
 	virtual void Update(float dt) override;
 	virtual void OnPaint() override;

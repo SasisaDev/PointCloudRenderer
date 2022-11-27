@@ -19,6 +19,8 @@ void UButton::OnPaint()
 bool UButton::OnButtonDown()
 {
 	Logger::Log("Click");
+	if(clickCallback)
+		clickCallback();
 	brush->SetTint(PressedTint);
 	brush->UpdateSSBO();
 	return true;

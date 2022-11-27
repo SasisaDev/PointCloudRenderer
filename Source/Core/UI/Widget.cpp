@@ -46,7 +46,7 @@ Transform2D UWidget::CalculateTransformOnScreenspace()
 					final.x = (WidgetDetails.transform.x);
 				}
 			}
-			final.y = (WidgetDetails.transform.y * SizeFactorY);
+			final.y = WidgetDetails.transform.y;
 		}
 		else if (_bit(align, ALIGN_TOP))
 		{
@@ -57,7 +57,7 @@ Transform2D UWidget::CalculateTransformOnScreenspace()
 					final.x = (WidgetDetails.transform.x * SizeFactorX);
 				}
 			}
-			final.y = ((WidgetDetails.transform.y * SizeFactorY) - height) * -1 - final.cy;
+			final.y = ((WidgetDetails.transform.y) - height) * -1 - final.cy;
 		}
 		else if (_bit(align, ALIGN_LEFT))
 		{
@@ -99,12 +99,12 @@ Transform2D UWidget::CalculateTransformOnWindow()
 	Window* window = (Window*)glfwGetWindowUserPointer(glfwGetCurrentContext());
 	if (window)
 	{
-		float SizeFactorX, SizeFactorY, aspect;
+		double SizeFactorX, SizeFactorY, aspect;
 		int width, height;
 		glfwGetWindowSize(window->GetHandle(), &width, &height);
-		SizeFactorX = width / WIDGETSPACE_X;
-		SizeFactorY = height / WIDGETSPACE_Y;
-		aspect = (float)width / (float)height;
+		SizeFactorX = (double)width / WIDGETSPACE_X;
+		SizeFactorY = (double)height / WIDGETSPACE_Y;
+		aspect = (double)width / (double)height;
 
 		Transform2D final = WidgetDetails.transform;
 #define _bit(a, b )(WidgetDetails.alignment. a & b) == b
@@ -162,6 +162,11 @@ Transform2D UWidget::CalculateTransformOnWindow()
 				final.y = (WidgetDetails.transform.y * SizeFactorY);
 				final.x = (WidgetDetails.transform.x);
 			}
+			else
+			{
+				final.y = (WidgetDetails.transform.y);
+				final.x = (WidgetDetails.transform.x);
+			}
 		}
 		else if (_bit(align, ALIGN_RIGHT))
 		{
@@ -193,10 +198,13 @@ void UWidget::AddChild(UWidget* child)
 
 void UWidget::Render()
 {
-	OnPaint();
-	for (auto child : Children)
+	if (bIsVisible)
 	{
-		child->Render();
+		OnPaint();
+		for (auto child : Children)
+		{
+			child->Render();
+		}
 	}
 }
 
@@ -208,9 +216,12 @@ void UWidget::Update(float DeltaTime)
 	}
 
 	// TO-DO: Memoize
-	Transform2D rect = CalculateTransformOnScreenspace();
-	Model = glm::translate(glm::mat4(1), glm::vec3(rect.x, rect.y, /*Z-Depth*/ 0));
-	Model = glm::scale(Model, glm::vec3(rect.cx, rect.cy, 1));
+	if (bIsVisible)
+	{
+		Transform2D rect = CalculateTransformOnScreenspace();
+		Model = glm::translate(glm::mat4(1), glm::vec3(rect.x, rect.y, /*Z-Depth*/ 0));
+		Model = glm::scale(Model, glm::vec3(rect.cx, rect.cy, 1));
+	}
 }
 
 void UWidget::OnPaint()
@@ -219,72 +230,76 @@ void UWidget::OnPaint()
 
 bool UWidget::OnEvent(const Event& event)
 {
-	int x;
-	int y;
-	Transform2D screenspace;
-
-	bool handled = false;
-
-	for (auto child : Children)
+	if (bIsVisible)
 	{
-		handled |= child->OnEvent(event);
-		if (handled) break;
-	}
+		int x;
+		int y;
+		Transform2D screenspace;
 
-	if (!handled)
-	{
-		switch (event.EventAction)
+		bool handled = false;
+
+		for (auto child : Children)
 		{
-		case EVENT_MOUSEBUTTON_DOWN:
-			x = reinterpret_cast<int>(event.Parameters[0]);
-			y = reinterpret_cast<int>(event.Parameters[1]);
-
-			screenspace = CalculateTransformOnWindow();
-
-			if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
-				&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
-			{
-				handled |= this->OnButtonDown();
-				return handled;
-			}
-			break;
-		case EVENT_MOUSEBUTTON_UP:
-			x = reinterpret_cast<int>(event.Parameters[0]);
-			y = reinterpret_cast<int>(event.Parameters[1]);
-
-			screenspace = CalculateTransformOnWindow();
-
-			if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
-				&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
-			{
-				handled |= this->OnButtonUp();
-				return handled;
-			}
-			break;
-		case EVENT_CURSOR_POSITION:
-			x = reinterpret_cast<int>(event.Parameters[0]);
-			y = reinterpret_cast<int>(event.Parameters[1]);
-
-			screenspace = CalculateTransformOnWindow();
-
-			if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
-				&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
-			{
-				handled |= this->OnOverlapBegin();
-				bIsOverlaping = true;
-				return handled;
-			}
-			else if (bIsOverlaping == true)
-			{
-				handled |= this->OnOverlapEnd();
-				bIsOverlaping = false;
-				return handled;
-			}
-			break;
+			handled |= child->OnEvent(event);
+			if (handled) break;
 		}
-	}
 
-	return handled;
+		if (!handled)
+		{
+			switch (event.EventAction)
+			{
+			case EVENT_MOUSEBUTTON_DOWN:
+				x = reinterpret_cast<int>(event.Parameters[0]);
+				y = reinterpret_cast<int>(event.Parameters[1]);
+
+				screenspace = CalculateTransformOnWindow();
+
+				if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
+					&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
+				{
+					handled |= this->OnButtonDown();
+					return handled;
+				}
+				break;
+			case EVENT_MOUSEBUTTON_UP:
+				x = reinterpret_cast<int>(event.Parameters[0]);
+				y = reinterpret_cast<int>(event.Parameters[1]);
+
+				screenspace = CalculateTransformOnWindow();
+
+				if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
+					&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
+				{
+					handled |= this->OnButtonUp();
+					return handled;
+				}
+				break;
+			case EVENT_CURSOR_POSITION:
+				x = reinterpret_cast<int>(event.Parameters[0]);
+				y = reinterpret_cast<int>(event.Parameters[1]);
+
+				screenspace = CalculateTransformOnWindow();
+
+				if (x >= screenspace.x && x <= screenspace.x + screenspace.cx
+					&& y >= screenspace.y && y <= screenspace.y + screenspace.cy)
+				{
+					handled |= this->OnOverlapBegin();
+					bIsOverlaping = true;
+					return handled;
+				}
+				else if (bIsOverlaping == true)
+				{
+					handled |= this->OnOverlapEnd();
+					bIsOverlaping = false;
+					return handled;
+				}
+				break;
+			}
+		}
+
+		return handled;
+	}
+	return false;
 }
 
 void UWidget::DrawBrush(Mesh* mesh, SBrush* brush)

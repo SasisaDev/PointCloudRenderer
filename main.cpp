@@ -18,8 +18,19 @@ int main(int argc, char* argv[])
 
 	Engine* PCREngine = App->CreateEngine("Cloud Point Renderer", 1280, 720);
 
+	//TEST
+	SPointCloudAsset* asset = NewObject(SPointCloudAsset, "cloud");
+	std::vector<CloudPoint> points = {
+		CloudPoint(glm::vec3(0, 2, 0), glm::vec3(1, 0, 1)),
+		CloudPoint(glm::vec3(1, 3, 0), glm::vec3(0, 0, 1)),
+		CloudPoint(glm::vec3(2, 1, 1), glm::vec3(0, 1, 0))
+	};
+	asset->SetPoints(points);
+	//
+
 	SScene* MainScene = NewObject<SScene>("MainScene");
 	SPointCloudActor* PointCloud = MainScene->SpawnActor<SPointCloudActor>(ActorCreateInfo("PointCloudActor"));
+	PointCloud->PointCloud = asset;
 	PointCloud->RebuildMesh();
 	SDebugActor* DbgActor = MainScene->SpawnActor<SDebugActor>(ActorCreateInfo("DebugActor"));
 	{

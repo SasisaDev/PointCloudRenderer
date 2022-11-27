@@ -2,25 +2,21 @@
 
 void SPointCloudActor::RebuildMesh()
 {
-	/*if (PointCloud)
+	if (!PointCloud)
 	{
-		for (auto point : PointCloud->GetPoints())
-		{
+		//TODO: Log
+		return;
+	}
+	
 
+	instances = 0;
+	for (CloudPoint point : PointCloud->GetPoints()) 
+	{
+		PointCloudSSBO.colors.push_back(glm::vec4(point.color, 1));
+		PointCloudSSBO.positions.push_back(glm::translate(glm::mat4(1), point.position));
+		instances++;
+	}
 
-			
-		}
-
-		BytedPointCloudSSBO bpc;
-		bpc.positions = PointCloudSSBO.positions.data();
-		bpc.colors = PointCloudSSBO.colors.data();
-		ssbo->UpdateBuffer(&bpc, (sizeof(glm::vec3) + sizeof(glm::vec4) * instances));
-	}*/
-
-	instances = 2;
-
-	PointCloudSSBO.colors = { glm::vec4(1.0f, 0.0f, 1.0f, 1.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f) };
-	PointCloudSSBO.positions = { glm::vec3(0, 2, 0), glm::vec3(2, 1, -4) };
 
 	BytedPointCloudSSBO* bpc = new BytedPointCloudSSBO[instances];
 
