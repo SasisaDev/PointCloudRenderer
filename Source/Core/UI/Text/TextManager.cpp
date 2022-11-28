@@ -1,8 +1,8 @@
 #include "TextManager.h"
 
-std::vector<Font> TextManager::Fonts = std::vector<Font>();
+ITextManager* ITextManager::Singleton = nullptr;
 
-const Font& TextManager::GetFont(std::string Name)
+const Font& ITextManager::GetFont(std::string Name)
 {
 	for (const Font& font: Fonts)
 	{
@@ -13,4 +13,11 @@ const Font& TextManager::GetFont(std::string Name)
 	}
 
 	return NULL;
+}
+
+ITextManager::ITextManager()
+{
+	if (ITextManager::Singleton) {
+		ITextManager::Singleton = this;
+	}
 }

@@ -21,9 +21,9 @@ int main(int argc, char* argv[])
 	//TEST
 	SPointCloudAsset* asset = NewObject(SPointCloudAsset, "cloud");
 	std::vector<CloudPoint> points = {
-		CloudPoint(glm::vec3(0, 2, 0), glm::vec3(1, 0, 1)),
-		CloudPoint(glm::vec3(1, 3, 0), glm::vec3(0, 0, 1)),
-		CloudPoint(glm::vec3(2, 1, 1), glm::vec3(0, 1, 0))
+		CloudPoint(glm::vec3(0, 2, 0), glm::vec3(91 / 255, 194 / 255, 1)),
+		CloudPoint(glm::vec3(1, 3, 0), glm::vec3(1, 1, 1)),
+		CloudPoint(glm::vec3(2, 1, 1), glm::vec3(1, 91/255, 91/255))
 	};
 	asset->SetPoints(points);
 	//

@@ -149,7 +149,7 @@ Transform2D UWidget::CalculateTransformOnWindow()
 					final.x = (WidgetDetails.transform.x * SizeFactorX);
 				}
 			}
-			final.y = (WidgetDetails.transform.y * SizeFactorY);
+			final.y = (WidgetDetails.transform.y);
 		}
 		else if (_bit(align, ALIGN_LEFT))
 		{
@@ -159,7 +159,7 @@ Transform2D UWidget::CalculateTransformOnWindow()
 				{
 					final.y = (WidgetDetails.transform.y / height * SizeFactorY);
 				}
-				final.y = (WidgetDetails.transform.y * SizeFactorY);
+				final.y = (WidgetDetails.transform.y);
 				final.x = (WidgetDetails.transform.x);
 			}
 			else

@@ -129,6 +129,9 @@
     <ClCompile Include="Source\Core\UI\Widgets\DropMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Core\Types\SmartPointers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Engine.h">
@@ -249,6 +252,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Core\UI\Widgets\DropMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Types\SmartPointers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

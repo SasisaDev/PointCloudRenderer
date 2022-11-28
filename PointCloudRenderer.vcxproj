@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Core\Types\SmartPointers.cpp" />
     <ClCompile Include="Source\Core\UI\Brush.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\Core\UI\Text\TextManager.cpp" />
@@ -187,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Types\Color.h" />
+    <ClInclude Include="Source\Core\Types\SmartPointers.h" />
     <ClInclude Include="Source\Core\UI\Brush.h" />
     <ClInclude Include="Source\Core\Application.h" />
     <ClInclude Include="Source\Core\Camera\Camera.h" />
